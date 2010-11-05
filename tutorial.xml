@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE tutorial [
+	 <!ELEMENT tutorial (category+)>
+	 <!ELEMENT category (chapter+|include)>
+	 <!ELEMENT chapter (section+|include)>
+	 <!ELEMENT section EMPTY>
+	 <!ELEMENT include (#PCDATA)>
+	 <!ATTLIST tutorial version CDATA #REQUIRED>
+	 <!ATTLIST category title CDATA #REQUIRED>
+	 <!ATTLIST chapter title CDATA #REQUIRED>
+	 <!ATTLIST section ref ID #REQUIRED>
+]>
+
+<tutorial version="alpha">
+	 <category title="About this tutorial">
+		  <include>about-tutorial</include>
+	 </category>
+	 <category title="Sage as a calculator">
+		  <include>sage-as-calc</include>
+	 </category>
+	 <category title="Programming in Sage">
+		  <include>prog</include>
+	 </category>
+	 <category title="Mathematical structures">
+		  <include>adv</include>
+	 </category>
+</tutorial>

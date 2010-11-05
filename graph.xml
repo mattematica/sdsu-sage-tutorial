@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE graph [
+<!ELEMENT graph (edge*)>
+<!ELEMENT edge EMPTY>
+<!ATTLIST edge 
+	v1 CDATA #REQUIRED
+	v2 CDATA #REQUIRED
+>
+]>
+
+<graph>
+	 <edge v1="ZZdivalg" v2="ZZdivalg1" />
+</graph>

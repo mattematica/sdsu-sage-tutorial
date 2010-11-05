@@ -1,0 +1,2284 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE document [
+	 <!ELEMENT document (category+,bibliography)>
+	 <!ELEMENT category (chapter+)>
+	 <!ELEMENT chapter (section+)>
+	 <!ELEMENT section (#PCDATA|link|image|verbatim|dependency|exercise|ref|code|list|enumeration|subsection)*>
+         <!ELEMENT subsection (#PCDATA|link|image|verbatim|exercise|ref|code|list|enumeration|subsubsection|dependency)*>
+         <!ELEMENT subsubsection (#PCDATA|link|image|verbatim|exercise|ref|code|list|enumeration)*>
+         <!ELEMENT list (item+)*>
+         <!ELEMENT enumeration (item+)*> 
+         <!ELEMENT item (#PCDATA|link|code|ref|enumeration|list)*>
+	 <!ELEMENT link (#PCDATA)>
+	 <!ELEMENT image (#PCDATA)>
+	 <!ELEMENT verbatim (#PCDATA)>
+	 <!ELEMENT code (#PCDATA)>
+	 <!ELEMENT dependency (#PCDATA)>
+	 <!ELEMENT exercise (#PCDATA|ref|enumeration|list|code)*>
+	 <!ELEMENT ref (#PCDATA)>
+	 <!ELEMENT bibliography (bibitem*)>
+	 <!ELEMENT bibitem (#PCDATA)>
+	 <!ATTLIST category title CDATA #IMPLIED label ID #REQUIRED>
+	 <!ATTLIST chapter title CDATA #REQUIRED label ID #REQUIRED>
+	 <!ATTLIST section title CDATA #REQUIRED label ID #REQUIRED>
+         <!ATTLIST subsection title CDATA #REQUIRED label ID #REQUIRED>
+         <!ATTLIST subsubsection title CDATA #REQUIRED label ID #REQUIRED> 
+	 <!ATTLIST link url CDATA #REQUIRED>
+	 <!ATTLIST image src CDATA #REQUIRED alt CDATA #REQUIRED height CDATA #REQUIRED width CDATA #REQUIRED>
+	 <!ATTLIST bibitem label ID #REQUIRED>
+	 <!ENTITY ne "&lt;&gt;">
+]>
+
+<document>
+	<category title="About the tutorial" label="about-tutorial">
+		<chapter title="Introduction" label="about-intro">
+			<section title="How to use this tutorial" label="intro-tutorial">
+				This tutorial is divided into four parts, which contain chapters, which further contain links to the tutorial's sections.
+				In the menu at the right, the parts and chapters are collapsible.
+				\\\\
+				This part is  "About this tutorial," with information about using, and amending the tutorial.
+				"Sage as a Calculator" shows how to do arithmetic, evaluate functions, plot graphs, 
+				compute derivatives and integrals  (eventually) and do other things that involve fairly simple commands.
+				
+				This material is similar to computations one would do with a calculator, 
+				and the chapter is intended to be understandable by a motivated pre-calculus or calculus student.
+				The chapter "Programming in Sage" teaches some of the more subtle issues about how sage computes: 
+				the different ways that Sage handles numbers, how to use
+				variables, lists, strings, and sets.  The chapter also shows how to save and restore your work, and how to program 
+				with iterative loops, conditional statements, and user created functions.
+				The chapter "Mathematical Structures" introduces the topics that one finds in college level curriculum: number theory, groups, rings, fields, etc.
+				\\\\
+				Throughout this tutorial we will explore how to use Sage to  perform calculations.
+				In each section we have tried to include exercises for practice and problems for more extensive exploration.
+				\\\\
+				At the beginning of each section is a list of things which you should understand before proceeding.
+				This list follows the text "You should be familiar with."
+				Clicking one of these links will populate and expand the window for "Hal" (our favorite computer of the new millenium) at the bottom of the screen.
+				It will contain a concise treatment of Sage concepts which are important to the section you are reading.
+				Click "Hal" in its titlebar to collapse or expand this window
+				\\\\
+				Some sections may contain numbered citations such as "[1]."
+				At the bottom of a page with at least one citation will be a bibliography section,
+				with the entries correspondingly numbered.
+			</section>
+			<section title="About Sage" label="intro-sage">
+				Sage is a free open source mathematical software system <ref>sageweb</ref>.
+				Originally created for research into mathematics, it has been evolving into a powerful tool for math education.
+				Sage combines numerous  other mathematical software packages using a single interface.
+				\\\\
+				As an open source project, Sage invites contributions from all of its users.
+				This tutorial is one of many sources of information for learning about Sage.  See the Sage webpage for more information.
+			</section>
+			<section title="Installing Sage" label="intro-install-sage">
+				To be done:
+			</section>
+			<section title="Helpful Tips" label="tips">
+				To be done:
+				\\\\
+				Tab completion...
+				\\
+				Getting help using '?' at the prompt...
+				\\
+				The notebook
+			</section>
+		</chapter>
+		<chapter title="Building this Tutorial" label="about-build">
+			<section title="Credits and License" label="build-license">
+				The content and code for this tutorial were written by Ryan Rosenbaum and David Monarres under the supervision of Mike  O'Sullivan.
+				The work was supported by San Diego State University's Presidential Leadership Fund.
+				\\\\
+				This work is licensed under the <link url="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+				Attribution-ShareAlike 3.0 License</link>.   You are free to share and to remix, but attribution should be given to 
+				the original funder and creators.
+			</section>
+			<section title="Editing the content" label="build-edit">
+				Additions to this tutorial are very welcome.  
+				Please let us know of any new material so that we may incorporate it into our version.\\\\
+				The only file that needs to be edited to add or remove content is content.xml.  
+				There is a template at the beginning of the file for adding a chapter and a section within the chapter. 
+				\\\\
+				We have four parts to the tutorial:  "How to use this tutorial" has  basic instructions about using and amending the tutorial, 
+				and the others have mathematical content. "Sage as a Calculator" is intended, as the title suggests, 
+				to cover straightforward computations, and we have designed it to be fairly accessible to an entering college student, 
+				or to a bright high school student.
+				\\\\
+				"Programming in Sage" eases the transition to higher level mathematics by treating topics that relate to the interface 
+				between mathematical concepts and computational issues.  This chapter covers 
+				basic structures like: Lists, sets and strings; 
+				The universe for a number or variable, rational numbers versus real numbers (of specificied precision); Programming essentials like conditionals 
+				and iterative computation; File handling, data handling etc.
+				\\\\
+				In "Mathematical Structures" the emphasis is on learning about specific mathematical structures, which have a Sage class
+				associated to them.  
+			</section>
+			<section title="Tools Used" label="build-used">
+				This tutorial makes extensive use of the freely available open source software including, but not limited to, the following:
+				\\\\
+				<list>
+					<item> 
+						<link url="http://jquery.com/">jQuery</link>,  is a fast and concise JavaScript library which  
+						simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.
+						\\\\
+					</item>
+					<item>
+						<link url="http://www.w3.org/math/">MathML</link>, is a collection of XML tags which can be used to 
+						mark up an equation in terms of its presentation and also its semantics. MathML attempts to capture something of the 
+						meaning behind equations rather than concentrating entirely on how they are going to be formatted out on the screen.
+						\\\\
+					</item>
+					<item>
+						<link url="http://www.maths.nottingham.ac.uk/personal/drw/lm.html">LaTexMathML.js</link>: 
+						A JavaScript program that does the conversion from basic
+						LaTeX to MathML for display in the browser. Written by Dr Douglas R. Woodall of the University of Nottingham 
+						which was based on Peter Jipsen's 
+						<link url="http://www1.chapman.edu/~jipsen/mathml/asciimath.html"> ASCII2MathML </link> script. 
+						\\\\
+					</item>
+				</list>
+				\\\\
+			</section>
+		</chapter>
+	</category> 
+
+	<category title="Sage as a calclator" label="sage-as-calc">
+		<chapter title="Arithmetic and functions" label="arithmetic-functions">
+			<section title="Basic Arithmetic" label="basic-arithmetic">
+				The basic operators are $ + , - , * , $ and $ / $ for addition, subtraction, multiplication and division, respectively.
+				Additionally, we use $ ^ $ for exponents.
+				<verbatim>
+	sage: 1+1
+	2
+	sage: 103-101
+	2
+	sage: 7*9
+	63
+	sage: 7337/11
+	667
+	sage: 11/4
+	11/4
+	sage: 2^5
+	32
+				</verbatim>
+				Also, we place the $ - $ symbol in front of a number to indicate it is negative
+				<verbatim>
+	sage: -6
+	-6
+	sage: -11+9
+	-2
+				</verbatim>
+				As we would expect, Sage aheres to the standard order of operations, PEMDAS 
+				(parenthesis, exponents, multiplication, division, addition, subtraction).
+				<verbatim>
+	sage: 2*4^2+1  
+	33
+	sage: (2*4)^2+1
+	65
+	sage: 2*4^(2+1)
+	128
+	sage: -3^2
+	-9
+	sage: (-3)^2
+	9
+				</verbatim>
+				There is a subtle thing to note about Sage.
+				When we divided $ 11 $ by $ 4 $, Sage returned $ \frac{11}{4} $ instead of 2.75.
+				If we wish to have Sage return a decimal we must input a decimal.
+				Here are a few examples demonstrating this
+				<verbatim>
+	sage: 11/4.0 
+	2.75000000000000
+	sage: 11/4.
+	2.75000000000000
+	sage: 11.0/4
+	2.75000000000000
+	sage: 11/4*1.
+	2.75000000000000
+				</verbatim>
+			</section>
+			<section title="Division and factoring" label="basic-division">
+				<dependency>basic-arithmetic</dependency>
+				When we divide an integer $ a $ by another integer $ b $ we call obtain a quotient $ q $ and a remainder $ r $.
+				For example, if $ a=14 $ and $ b=4 $, then $ a = 3b+2 $.
+				Hence our quotient is $ q=3 $ and our remainder is $ r=2 $.
+				To calculate the quotient we use the $ // $ operator and to calculate the remainder we use the $ % $ operator.
+				<verbatim>
+	sage: 14 // 4
+	3
+	sage: 14 % 4
+	2
+				</verbatim>
+				Note that the quotient operator $ // $ is two backslashes.
+				If we wish to obtain the pair $ (q,r) $ all at once, we may use the <code>divmod</code> function
+				<verbatim>
+	sage: divmod(14,4)
+	(3, 2)
+				</verbatim>
+				We say that $ b $ divides $ a $ if we get a remainder of $ 0 $ when we divide $ a $ by $ b $.
+				Integers in Sage have a built-in function ( or 'method' ) which allows us to check if an integer divides another:
+				<verbatim>
+	sage: 3.divides(15)
+	True
+	sage: 5.divides(17)
+	False
+				</verbatim>
+				Along these lines, given an integer $ a $, we call the collection of integers which divide $ a $ its divisors.
+				Integers in Sage have the <code>divisors</code> method built-in as well:
+				<verbatim>
+	sage: 12.divisors()
+	[1, 2, 3, 4, 6, 12]
+	sage: 101.divisors()
+	[1,101]
+				</verbatim>
+				When the divisors of an integer are 1 and itself we say it is a prime number.
+				To check if a number is prime in sage, we use the 'is_prime' method.
+				<verbatim>
+	sage: (2^19-1).is_prime()
+	True
+	sage: 153.is_prime()
+	False
+				</verbatim>
+				We should take note of the parentheses around the number in the first example,
+				which are important to the order of operations in Sage.
+				Try evaluating '2^19-1.is_prime()' and see what happens.
+				\\\\
+				Related to the divisors of an integer are its prime factors.
+				We use the <code>factor</code> method to obtain the prime factorization of an integer.
+				<verbatim>
+	sage: 62.factor()
+	2 * 31
+	sage: 63.factor()
+	3^2 * 7
+				</verbatim>
+				If we are interested in simply knowing which prime numbers divide an integer, we may use the <code>prime_divisors</code> 
+				(or <code>prime_factors</code>) method.
+				<verbatim>
+	sage: 24.prime_divisors() 
+	[2, 3]
+	sage: 63.prime_factors()
+	[3, 7]
+				</verbatim>
+				The final fundamental idea in factoring is that of the greatest common divisor.
+				A common divisor of two integers $ a $ and $ b $ is any integer which is a divisor of each.
+				The greatest common divisor (gcd), not too surprisingly, is then the greatest integer which divides each integer.
+				We use the <code>gcd</code> function to calculate the greatest common divisor
+				<verbatim>
+	sage: gcd(14,63)                                                                           
+	7
+	sage: gcd(15,19)  
+	1
+				</verbatim>
+				Notice that if two integers share no common prime factor, then their gcd will be $ 1 $.
+				\\\\
+				Related to the gcd is the least common multiple (lcm) of two integers.
+				The least common multiple of $ a $ and $ b $ is the smallest integer which is divisible by $ a $ and $ b $.
+				We use <code>lcm</code> in Sage to calculate the least common multiple
+				<verbatim>
+	sage: lcm(4,5)
+	20
+	sage: lcm(14,21)
+	42
+				</verbatim>
+				<exercise>
+					Calculate $gcd(a,b)$, lcm($a$,$b$) and $ab$ for the pairs $ (a,b) =  (2,5) $, $ (4,10) $ and $ (18,51) $.
+					How do the gcd, lcm and the product of the numbers relate?
+				</exercise>
+			</section>
+			<section title="Basic functions and constants" label="basic-functions">
+				<dependency>basic-arithmetic</dependency>
+				Nearly all standard functions we run into in mathematics are included in Sage.
+				In this section, we shall cover some of the more fundamental functions and constants, including:
+				max, min, abs, floor, ceil, trig functions, exponentials, logarithms, $ e $, $ \pi $ and the golden ratio $ \phi $.
+				\\\\
+				The functions <code>max</code> and <code>min</code> return the maximum and minimum of a set of numbers.
+				<verbatim>
+	sage: max(1,5,8)
+	8
+	sage: min(1/2,1/3)
+	1/3
+				</verbatim>
+				We may input any number of arguments into the <code>max</code> and <code>min</code> functions.
+				\\\\
+				The absolute value of a number $ x $ is denoted $ |x| $.
+				For example, $ |-4| = |4| = 4 $.
+				In Sage we use the function <code>abs</code> to obtain the absolute value
+				<verbatim>
+	sage: abs(-10)
+	10
+	sage: abs(4)
+	4
+				</verbatim>
+				Another set of important functions are those that round numbers to integers.
+				The <code>floor</code> function rounds down to the nearest integer, while <code>ceil</code> rounds up.
+				Typically we denote floor with $ \lfloor x \rfloor $ and ceiling by $ \lceil x \rceil $.
+				<verbatim>
+	sage: floor(2.1)
+	2
+	sage: ceil(2.1)
+	3
+				</verbatim>
+				We need to be very careful with decimals while using <code>floor</code> and <code>ceil</code>.
+				For, consider the following example
+				<verbatim>
+	sage: floor(1/(2.1-2))
+	9
+				</verbatim>
+				This is clearly not correct: $ \lfloor 1/(2.1-2) \rfloor = \lfloor 1/.1 \rfloor = \lfloor 10  \rfloor = 10$.
+				So what happened?
+				<verbatim>
+	sage: 1/(2.1-2)
+	9.99999999999999
+				</verbatim>
+				Computers use binary notation, while we are accustomed to decimal notation.
+				The number $ 2.1 $ in decimal notation is quite simple and short,
+				but when converted to binary it is $ 10.0\overline{0011} = 10.0001100110011\ldots $
+				Since computers cannot store an infinite number of digits, this gets rounded off somewhere.
+				Resulting in the slight error we saw.
+				In Sage, however, rational numbers (fractions) have perfect precision, so we will never see this error.
+				<verbatim>
+	sage: floor(1/(21/10-2))
+	10
+				</verbatim>
+				Due to this, it is a good idea to use rational numbers whenever possible instead of decimals.
+				\\\\
+				We use <code>sqrt()</code> to calculate the square root.  As with fractions, if we want a decimal expression we need to give a decimal input.   
+				<verbatim>
+	sage: sqrt(3)
+	sqrt(3)
+	sage: sqrt(3.0)
+	1.73205080756888
+	sage: sqrt(8,3)
+
+				</verbatim>
+				\\\\
+				To compute other roots, use a rational exponent.  Sage can compute any rational power. 
+				If either the exponent or the base is a decimal then the output will be a decimal.
+				<verbatim>
+	sage: 3^(1/2)
+	sqrt(3)
+	sage: (3.0)^(1/2)
+	1.73205080756888
+	sage: 8^(1/2)
+	2*sqrt(2)
+	sage: 8^(1/3)
+	2
+				</verbatim>
+				The trigonometric functions are exactly what one finds in textbooks: for sine and cosine we use the familiar  <code>sin</code> and <code>cos</code>.
+				<verbatim>
+	sage: sin(1)
+	sin(1)
+	sage: sin(1.0)
+	0.841470984807897
+	sage: cos(3/2)
+	cos(3/2)
+	sage: cos(3/2.0)
+	0.0707372016677029
+				</verbatim>
+				Again we see the same behavior that we saw with <code>sqrt</code>.
+				Essentially, Sage wants to give us an exact answer;
+				there is, however, no way to simplify $ \sin(1) $.
+				So why bother? Well, some expressions involving sine can indeed be simplified.
+				For example, an important identity from geometry is that $ \sin(\frac{\pi}3) = \frac{\sqrt 3} 2 $.
+				Sage has a built-in symbolic $\pi$, and understands this identity
+				<verbatim>
+	sage: pi
+	pi
+	sage: sin(pi/3)
+	1/2*sqrt(3)
+				</verbatim>
+				When we type <code>pi</code> in Sage we are dealing exactly with $ \pi $, not some numerical approximation.
+				However, we can call for a numerical approximation using the <code>n</code> method
+				<verbatim>
+	sage: pi.n()
+	3.14159265358979
+	sage: sin(pi)
+	0
+	sage: sin(pi.n())
+	1.22464679914735e-16
+				</verbatim>
+				We see that when using the symbolic <code>pi</code> Sage understands the identity $ sin(\pi) = 0 $.
+				When we use the approximation, however, we get an approximation back.
+				The <code>e-15</code> is the shorthand for $10^-15$.
+				Basically <code>1.22464679914735e-16</code> should be zero, but there are errors due to the approximations.
+				Here are a few commonly known examples of using the symbolic, precise <code>pi</code> vs the numerical approximation
+				<verbatim>
+	sage: sin(pi/6)                                                                            
+	1/2
+	sage: sin(pi.n()/6)
+	0.500000000000000
+	sage: sin(pi/4)
+	1/2*sqrt(2)
+	sage: sin(pi.n()/4)
+	0.707106781186547
+				</verbatim>
+				There are in fact some special angles for which the value of sine or cosine can be cleverly simplified.
+				<verbatim>
+	sage: sin(pi/10)                                                                           
+	1/4*sqrt(5) - 1/4
+	sage: cos(pi/5)
+	1/4*sqrt(5) + 1/4
+	sage: sin(5*pi/12)
+	1/12*(sqrt(3) + 3)*sqrt(6)
+				</verbatim>
+Other trigonometric functions, the inverse trigonometric functions and hyperbolic functions are also available.
+                                <verbatim>
+	sage: arctan(1.0)
+	0.785398163397448
+	sage: sinh(9.0)
+	4051.54190208279
+				</verbatim>
+				Similar to <code>pi</code> Sage has a built-in symbolic constant for the number $ e $, the base of the natural logarithm.
+				This constant is named <code>e</code>
+				<verbatim>
+	sage: e
+	e
+	sage: e.n()
+	2.71828182845905
+				</verbatim>
+				While some might be familiar with using $ \ln(x) $ for natural log  and $ \log(x) $ to represent log base 10,
+				these both represent logarithms base $ e $ written as such.
+				However, with the <code>log</code> function we may specify a different base as a second argument.
+				That is $ \log_b(x) $ in Sage is written <code>log(x,b)</code>
+				<verbatim>
+	sage: ln(e)
+	1
+	sage: log(e)
+	1
+	sage: log(e^2)
+	2
+	sage: log(10)
+	log(10)
+	sage: log(10.0)
+	2.30258509299405
+	sage: log(100,10)
+	2
+				</verbatim>
+				Exponentiation base $ e $ is done using the <code>exp</code> function
+				<verbatim>
+	sage: exp(2)
+	e^2
+	sage: exp(2.0)
+	7.38905609893065
+	sage: exp(log(pi))
+	pi
+				</verbatim>
+				<exercise>
+					<enumeration>
+						<item>Compare $e^{i\pi}$ with a numerical approximation of it using <code>pi.n()</code>. </item>
+						<item>Verify some of the standard trigonometric identities.  See if you can find instance where using the numerical approximation <code> pi.n()</code> leads to an error.</item>
+					</enumeration>
+				</exercise>
+
+			</section>
+			
+			<section title="Variables, Equations and Inequalities" label="basic-equations">
+				<dependency>basic-functions</dependency>
+				
+				
+				When working with variables in Sage we must first declare them. We can use both simple letter and full names when declaring a 
+				symbolic variable.
+				
+				<verbatim>
+	sage: x,y,z,t = var("x y z t")
+	sage: phi, theta, rho = var("phi theta rho") 
+				</verbatim>
+				
+				Attempting to use a symbolic variable before it has been declared will cause Sage to complain  loudly.
+				
+				<verbatim>
+	sage: u
+	sage: u
+	...
+	NameError: name 'u' is not defined
+				</verbatim>
+
+				We can un-declare a symbolic variable by using the <code>restore</code> command.
+				<verbatim>
+	sage: restore('phi')
+	sage: phi
+	...
+	NameError: name 'phi' is not defined
+				</verbatim>
+
+				In Sage,  equations and inequalities are defined using the conditional operators <code>==</code>, <code>&lt;=</code>, and <code>&gt;=</code> 
+				and will return either <code>True</code>,<code>False</code>, or just the equation/inequality.
+				
+				<verbatim>
+	sage: 9 == 9
+	True
+	sage: 9 &lt;= 10
+	True
+	sage: 3*x - 10 == 5
+	3*x - 10 == 5
+				</verbatim>
+				We can solve symbolic equations and inequalities by using the, aptly named, <code>solve</code> command. 
+				<verbatim>
+	sage: solve(3*x - 2 == 5,x)
+	[x == (7/3)]
+	sage: solve( 2*theta -5 == 1, theta)
+	[theta == 3]
+	sage: solve( 2*t - 5 >= 17,t)
+	[[t >= 11]]
+	sage: solve( 3*x -2 &gt; 5, x) 
+	[[x &gt; (7/3)]]
+				</verbatim>
+				
+				\\\\
+				We can also solve for equations which have multiple solutions, Sage returns these as a list. 
+				
+				<verbatim>
+	sage: solve( x^2 + x  == 6, x)
+	[x == -3, x == 2]
+	sage: solve(2*x^2 - x + 1 == 0, x)
+	[x == -1/4*I*sqrt(7) + 1/4, x == 1/4*I*sqrt(7) + 1/4]
+	sage: solve( exp(x) == -1, x)
+	[x == I*pi]
+				</verbatim>
+				\\\\
+				The solution sets of certain inequalities consist of the union and intersection of open intervals
+				<verbatim>
+	sage: solve( x^2 - 6 &gt;= 3, x )
+	[[x &lt;= -3], [x &gt;= 3]]
+	sage: solve( x^2 - 6 &lt;= 3, x )
+	[[x &gt;= -3, x &lt;= 3]]
+				</verbatim>
+				
+				Small systems of equations can be solved also and can result in either a unique solution, infinitely many solutions, or no solutions at all. 
+				
+				
+				<verbatim>
+	sage: solve( [3*x - y == 2, -2*x -y == 1 ], x,y)
+	[[x == (1/5), y == (-7/5)]]
+	sage: solve( [	2*x + y == -1 , -4*x - 2*y == 2],x,y)
+	[[x == -1/2*r1 - 1/2, y == r1]]
+	sage: solve( [	2*x - y == -1 , 2*x - y == 2],x,y)   
+	[]
+				</verbatim>
+				  
+				In the second equation show above, <code>r1</code> signifies that there is a free variable which parameterizes the solution set. 
+				When there is more than one free variable, Sage enumerates them 
+				
+				<verbatim>
+	sage: solve([ 2*x + 3*y + 5*z == 1, 4*x + 6*y + 10*z == 2, 6*x + 9*y + 15*z == 3], x,y,z)
+	[[x == -5/2*r1 - 3/2*r2 + 1/2, y == r2, z == r1]]
+				</verbatim>
+
+				Using <code>solve</code> can be very slow for large systems of equations. For these systems, it is best to use the 
+				<link url="http://sagemath.org/doc/tutorial/tour_linalg.html">linear algebra</link> functions as they are 
+				quite efficient.
+				\\\\ 
+				The <code>solve()</code> command will attempt to express the solution of an equation without the use of floating point numbers. 
+				If this cannot be done, it will return the solution in a symbolic form
+				\\\\
+				<verbatim>
+	sage: solve( sin(x) == x, x)
+	[x == sin(x)]
+	sage: solve( exp(x) - x == 0 , x)
+	[x == e^x]
+	sage: solve( cos(x) - sin(x) == 0 , x)
+	[sin(x) == cos(x)]
+	sage: solve( cos(x) - exp(x) == 0 , x)
+	[cos(x) == e^x]
+				</verbatim>
+
+				To find a numeric approximation of the solution we can use the <code>find_root()</code> command. 
+				Which requires both the expression and a closed interval on which to search for a solution
+				
+				<verbatim>
+	sage: find_root(sin(x) == x, -pi/2 , pi/2)
+	0.0
+	sage: find_root(sin(x) == cos(x), pi, 3*pi/2) 
+	3.9269908169872414
+
+				</verbatim>
+				  
+				<code>find_root()</code> will only return one solution on the specified interval, if one exists. It will not find the complete 
+				solution set over the entire real numbers. 
+				\\\\
+
+				To find a complete set of solutions, the reader must use <code>find_root()</code>
+				repeatedly over cleverly selected intervals. Sadly, at this point, Sage cannot do all of the thinking for us.
+				This feature is not planned until Sage 10. :-)
+				\\\\
+			</section>
+			<section title='Basic Statistics' label='basic-stat'>
+				<subsection title="Descriptive Stats" label='basic-stat-desc'>
+					In this section we will discuss the use of some of the basic descriptive statistic functions availble for use in Sage.
+					\\\\
+					To demonstrate their usage we will first generate a psudo-random list of integers to describe.
+					The <code> random()</code> function generates a random number from $\left[ 0 , 1 \right)$, so we will use a trick.
+					Note, by the nature of random number generation your list of numbers will be different.
+					<verbatim>
+	sage: data = [  floor(tan( pi* random() - pi/2.1 )) for i in [ 1 .. 20 ] ] 
+	sage: data                                                                 
+	[1, -1, -7, 0, -4, -1, -2, 1, 3, 5, -1, 
+	25, -5, 1, 2, 0, 1, -1, -1, -1]
+					</verbatim>
+					We can compute the mean, median, mode, variance, and standard deviation of this data. 
+					<verbatim>
+	sage: mean(data)
+	3/4
+	sage: median(data)
+	-1/2
+	sage: mode(data)  
+	[-1]
+	sage: variance(data)
+	3023/76
+	sage: std(data)     
+	1/2*sqrt(3023/19)
+					</verbatim>
+					Note that both the <code>std</code> and <code>variance</code> are computed in their unbiased forms. 
+					It we want to bias these measures then you can use the <code>bias=True</code> option. 
+					\\\\
+					We can also compute a rolling, or moving, average of the data with <code>moving_average</code>.
+					<verbatim>
+	sage: moving_average(data,4)
+	[-7/4, -3, -3, -7/4, -3/2, 1/4, 7/4, 2, 8, 6, 5, 23/4, 
+	-1/2, 1, 1/2, -1/4, -1/2]
+	sage: moving_average(data,10)
+	[-1/2, -7/10, 19/10, 21/10, 11/5, 14/5, 29/10, 16/5, 3, 13/5, 2]
+	sage: moving_average(data,20)
+	[3/4]
+					</verbatim>
+				</subsection>
+			</section>
+		</chapter>
+		<chapter title="Plotting" label="sage-calc-plotting">
+			<section title="Basic Plotting and Graphics" label="basic-plotting">
+				<dependency> basic-functions </dependency>
+				\\\\
+				Sage has  many ways for us to visualize the mathematics with which we are working.
+				In this section we will quickly get the reader up to speed with some of the basic commands used
+				when plotting functions and working with graphics.
+				
+				\\\\
+				
+				To produce a basic plot of $sin(x)$ from $x=-\frac{\pi}{2}$ to $x = \frac{\pi}{2}$ 
+				we will use the <code>plot</code> command.
+				<verbatim>
+	sage: f(x) = sin(x)
+	sage: p = plot(f(x), (x, -pi/2, pi/2))
+	sage: p.show()
+				</verbatim>
+				<image alt="Plot of sin(x) from x=-pi/2 to pi/2" src="pics/sin_plot.png" height="300" width="400" />
+				
+				\\\\
+				By default, the plot created will be quite plain. To add axis labels and make our plotted linepurple, we can alter 
+				the <code>plot</code> attribute by adding the <code>axes_labels</code> and <code>color</code> options
+				<verbatim>
+	sage: p = plot(f(x), (x,-pi/2, pi/2), axes_labels=['x','sin(x)'], color='purple') 
+	sage: p.show()
+				</verbatim>
+				<image alt="plot of sin with purple line and basic axis labels" src="pics/sin_plot_purple_labels.png" height="300" width="400" />
+				\\\\
+				  
+				The <code>color</code> option accepts string color designations ( 'purple', 'green', 'red', 'black', etc...), 
+				an RGB triple such as (.25,.10,1),  or an HTML-style hex triple such as  #ff00aa.
+				\\\\
+				We can change the style of line, whether it is solid, dashed,  and it's thickness by using the <code>linestyle</code> and the
+				<code>thickness</code> options.
+				<verbatim>
+	sage: p = plot(f(x), (x,-pi/2, pi/2), linestyle='--', thickness=3) 
+	sage: p.show()
+				</verbatim>
+				<image alt="Plot of sin(x) using a thick dashed blue line" src="pics/sin_plot_dashed_thick.png" height="300" width="400" />
+				\\\\
+				We can display the graphs of two functions on the same axes by adding the plots together. 
+				<verbatim>
+	sage: f(x) = sin(x)
+	sage: g(x) = cos(x)
+	sage: p = plot(f(x),(x,-pi/2,pi/2), color='black')
+	sage: q = plot(g(x), (x,-pi/2, pi/2), color='red')
+	sage: r = p + q 
+	sage: r.show()
+				</verbatim>
+				<image alt="Plot of sin(x) and cos(x) on the same axes" src="pics/sin_cos_plot.png" height="300" width="400" />
+				\\\\
+				To tie together our plotting commands with some material we have learned earlier, let's use the <code>find_root</code> 
+				command to find the point where $\sin(x)$ and $\cos(x)$ intersect. We will then add this point to the graph and label it. 
+				<verbatim>
+	sage: find_root( sin(x) == cos(x),-pi/2, pi/2 )                           
+	0.78539816339744839
+	sage: P = point( [(0.78539816339744839, sin(0.78539816339744839))] )      
+	sage: T = text("(0.79,0.71)", (0.78539816339744839, sin(0.78539816339744839) + .10))
+	sage: s = P + r + T                                                
+	sage: s.show()
+				</verbatim>
+				<image alt="sin(x) and cos(x) on same axes with point of intersection labeled" src="pics/sin_cos_point_plot.png" height="300" width="400" />
+				\\\\
+				Sage handles many of the details of producing "nice" looking plots in a way that is transparent to the user. However there are
+				times in which Sage will produce a plot which isn't quite what we were expecting.
+				<verbatim>
+	sage: f(x) = (x^3 + x^2 + x)/(x^2 - x -2 )
+	sage: p = plot(f(x), (x, -5,5))
+	sage: p.show()
+				</verbatim>
+				<image alt="Plot of rational function with asymptotes" src="pics/rat_func_with_asymptotes.png" height="300" width="400" />
+				\\\\
+				The vertical asymptotes of this rational functions cause Sage to adjust the aspect ratio of the plot
+				to display the rather large $y$ values near $x=-1$ an $x=2$. This however obfuscates most of the features of this function
+				in a way that we may have not intended. To remedy this we can explicitly adjust the vertical and horizontal limits of our plot
+				<verbatim>
+	sage: p.show(xmin=-2, xmax=4, ymin=-20, ymax=20)
+				</verbatim>
+				<image alt="Plot of rational function with asymptote with vertical limits adjusted" 
+				       src="pics/rat_func_with_asymptotes_adj.png" 
+				       height="300" 
+				       width="400" />
+				\\\\
+				Which, in the author's opinion, displays the features of this particular function in a much more pleasing fashion. 
+				\\\\
+				Sage can handle parametric plots with the <code>parametric_plot()</code> command. The following is a simple circle of 
+				radius 3
+				<verbatim>
+	sage: t = var('t')
+	sage: p = parametric_plot( [3*cos(t), 3*sin(t)], (t, 0, 2*pi) )
+	sage: p.show()
+				</verbatim>
+				<image alt="Circle of radius 3 centered at the origin" src="pics/parametric_circle.png" height="300" width="400"/>
+				\\\\
+				The default choice of aspect ratio makes the plot above decidedly "un-circle like". We can adjust this by using the
+				<code>aspect_ratio</code> option
+				<verbatim>
+	sage: p.show(aspect_ratio=1)
+				</verbatim>
+				<image alt="Circle of radius 3 with 1/1 aspect ratio" src="pics/parametric_circle_fixed.png" height="400" width="400" />
+				\\\\
+				The different plotting commands accept many of the same options as <code>plot</code>.
+				The following generates the Lissajous Curve $L(3,2)$ with a thick red dashed line. 
+				<verbatim>
+	sage: p = parametric_plot( [sin(3*t), sin(2*t)], (t, 0, 3*pi), thickness=2, color='red', linestyle="--") 
+	sage: p.show()
+				</verbatim>
+				<image alt="Lissajous Curve $L(3,2)$" src="pics/L3,2-red.png" height="300" width="400" />
+				\\\\
+				Polar plots can also be done using the <code>polar_plot</code> command
+				<verbatim>
+	sage: theta = var("theta")                       
+	sage: r(theta) = sin(4*theta)                    
+	sage: p = polar_plot((r(theta)), (theta, 0, 2*pi) )
+	sage: p.show()
+				</verbatim>
+				<image alt="Eight Petal 'folium' curve" src="pics/8petal-polar.png" height="300" width="400"/>
+			</section>
+			<section title="3D Plotting" label="plotting-3d">
+				\\\\
+				Producing 3D plots can be done using the <code>plot3d</code> command
+				<verbatim>
+	sage: x,y = var("x y")
+	sage: f(x,y) = x^2 - y^2
+	sage: p = plot3d(f(x,y), (x,-10,10), (y,-10,10))                 
+	sage: p.show()
+				</verbatim>
+				<image alt="Snapshot of 3D plot" src="pics/3d-plot-1.png" height="465" width="400" />
+				\\\\
+				Sage handles 3d plotting a bit differently than what we have seen thus far.
+				It uses a program named <link url="http://jmol.sourceforge.net">jmol</link>
+				to generate interactive plots. So instead of just a static picture we will see either a 
+				window like pictured above or, if you are using Sage's notebook interface,
+				a java applet in your browser's window. 
+				\\\\
+				One nice thing about the way that Sage does this  is that you can rotate your plot by just 
+				clicking on the surface and dragging it in the direction in which you would like for it to rotate. 
+				Zooming in/out can also be done by using your mouse's wheel button (or two-finger vertical swipe on a mac). Once 
+				you have rotated and zoomed the plot to your liking, you can save the plot as a file.
+				Do this by right-clicking anywhere in the window/applet and selecting <code>save</code>, 
+				then <code>png-image</code> as pictured below
+				\\\\
+				<image alt="Saving a 3d plot to a file in Jmol" src="pics/3d-plot-2.png" height="465" width="400"/>
+				\\\\
+				Note that if you are running Sage on windows or on sagenb.org that your file will be saved
+				either in your VMware virtual machine or on sagenb.org.
+				\\\\
+				  
+			</section>
+		</chapter>
+	</category>
+
+	<category title="Programming" label="prog">
+		<chapter title="Intro to programming" label="prog-intro">
+			<section title="Universes and coercion" label="universes">
+				<dependency>basic-arithmetic</dependency>
+				<dependency>basic-functions</dependency>
+				In order to construct certain objects in Sage, we will need to understand the concepts of Universes (classes) and coercion.
+				The most fundamental universe we work with is $ \mathbb Z $, the set of integers.
+				Within the integers, we may add, subtract and multiply all we like and we will always get back an integer.
+				However, once we start dividing, we leave the universe of the integers and enter $ \mathbb Q $, the rational numbers.
+				Yet there are some numbers which cannot be expressed as the ratio of two integers.
+				One such is example is <link url="http://www.math.utah.edu/~pa/math/q1.html">$ \sqrt 2 $</link>.
+				\\\\
+				In Sage, quite appropriately, the integers are given the name <code>ZZ</code>, 
+				the rationals <code>QQ</code> and the reals <code>RR</code>.
+				<verbatim>
+	sage: ZZ 
+	Integer Ring
+	sage: QQ
+	Rational Field
+	sage: RR
+	Real Field with 53 bits of precision
+				</verbatim>
+				In addition to these, we may work with complex numbers $ \mathbb C $ in Sage.
+				The complex numbers, sometimes called imaginary numbers, 
+				are numbers of the form $ a+bi $ where $ a $ and $ b $ are real and $ i = \sqrt{-1} $.
+				As one might expect, the complex numbers are given the name <code>CC</code>.
+				<verbatim>
+	sage: CC
+	Complex Field with 53 bits of precision
+				</verbatim>
+				We can check if certain objects live in a universe using the <code>in</code> operator.
+				<verbatim>
+	sage: 1 in ZZ  
+	True
+	sage: 1/2 in ZZ
+	False
+	sage: 1/2 in QQ
+	True
+	sage: sqrt(2) in QQ
+	False
+	sage: sqrt(2) in RR
+	True
+	sage: i in RR
+	False
+	sage: i in CC
+	True
+				</verbatim>
+				When working in Sage it is always important to understand which universe we are working in.
+				To check which universe we are in, we use the <code>parent</code> function.
+				<verbatim>
+	sage: parent(1)
+	Integer Ring
+	sage: parent(1/2)
+	Rational Field
+	sage: parent(pi)
+	Symbolic Ring
+	sage: parent(pi.n())
+	Real Field with 53 bits of precision
+				</verbatim>
+				Notice that <code>pi</code> is naturally contained in the <code>Symbolic Ring</code>.
+				This is why expressions involving <code>pi</code> are evaluated using exact identities as opposed to numerical approximations.
+				However, <code>pi.n()</code> is the numerical approximation of <code>pi</code>.
+				\\\\
+				Here's an interesting example of what happens when we mix the <code>pi</code> symbol with a decimal.
+				<verbatim>
+	sage: exp(1.)*pi
+	2.71828182845905*pi
+	sage: parent(exp(1.)*pi)
+	Symbolic Ring
+				</verbatim>
+				Sage will always choose the universe which offers the most precision.
+				\\\\
+				At times, however, we want Sage to think of a certain object as living in a particular universe through a process called coercion.
+				Let's see some examples:
+				<verbatim>
+	sage: QQ(.5)              
+	1/2
+	sage: sqrt(2)
+	sqrt(2)
+	sage: RR(sqrt(2))
+	1.41421356237310
+				</verbatim>
+				In general, we coerce an element $ x $ into a structure $ R $ with the command <code>R(x)</code>.
+				The coercion must make sense, of course.
+			</section>
+			<section title="Booleans" label="booleans">
+				A boolean is a truth value, represented by <code>True</code> or <code>False</code>.
+				<verbatim>
+	sage: True        
+	True
+	sage: False
+	False
+				</verbatim>
+				It is important to understand how to work with booleans for programming.
+				The two most fundamental operators for booleans are <code>and</code> and <code>or</code>.
+				Suppose $ X $ and $ Y $ are booleans.
+				\\\\
+				<list>
+					<item> ($X$ and $Y$) is True if both $X$ and $Y$ are True. </item>
+					<item> If at least one of them is False, then it is False.</item>
+					<item> ($X$ or $Y$) is True if at least one of $X$ or $Y$ is True.</item>
+				</list>
+				<verbatim>
+	sage: True and False
+	False
+	sage: True and True
+	True
+	sage: True or False
+	True
+	sage: False or False
+	False
+				</verbatim>
+				We may use parentheses to control the order of evaluation of these truth statements.
+				<verbatim>
+	sage: (True or False) and False
+	False
+	sage: True or (False and False)
+	True
+				</verbatim>
+				In the first example <code>(True or False)</code> is evaluated to be True first, then <code>True and False</code> evaluates to be False.
+				In the second example, <code>(False and False)</code> evaluates to be False, but <code>True or False</code> is True.
+				\\\\
+				Another important operator on booleans is the exclusive or operator, represented by <code>^^</code> in Sage.
+				($X$ ^^ $Y$) is True if exactly one of $ X $ or $ Y $ is True, and the other is False;
+				otherwise it is False.
+				<verbatim>
+	sage: True ^^ True         # xor (exclusive or) operator
+	False
+	sage: True ^^ False
+	True
+	sage: False ^^ False
+	False
+				</verbatim>
+				We can also negate a boolean using the <code>not</code> operator.
+				<verbatim>
+	sage: not True
+	False
+	sage: not False
+	True
+				</verbatim>
+
+				Equalities are boolean statements which indicate whether two objects are equal.
+				To check equality we use the <code>==</code> operator.
+				<verbatim>
+	sage: 1 == 1
+	True
+	sage: 1 == 0
+	False
+				</verbatim>
+				Please take note that we use two equals signs, not one!
+				To check if two things are not equal, we have two options:
+				The <code>!=</code> operator and the <code>&ne;</code> operator.
+				<verbatim>
+	sage: 1 != 1
+	False
+	sage: 1 != 0
+	True
+	sage: 1 &ne; 0
+	True
+				</verbatim>
+				If two objects belong to a universe in which it makes sense to say one is greater than the other,
+				then we also check this in Sage.
+				This is what is meant by an inequality.
+				We use <code>&gt;</code> for greather-than and <code>&lt;</code> for less-than;
+				Additionally we use <code>&gt;=</code> for greater-than-or-equal-to and similarly <code>&lt;=</code> for less-than-or-equal-to.
+				The following examples may seem silly.  
+				In practice, boolean tests are used to test when some varying object satisfies a property of interest.
+				<verbatim>
+	sage: 1 &gt; 2
+	False
+	sage: 2 &gt; 1
+	True
+	sage: 4.1 &lt; 5.7
+	True
+	sage: 6 &lt; 5
+	False
+	sage: 1 &gt;= .99999
+	True
+	sage: 1 &lt;= 35
+	True
+				</verbatim>
+			</section>
+			<section title="Variables" label="variables">
+				In Sage, a variable is a label which is assigned a value.
+				Here's an example.
+				<verbatim>
+	sage: m=2^19-1
+	sage: m
+	524287
+				</verbatim>
+				We use an <code>=</code> to assign the value on the right to the variable on the left.
+				Having assigned a variable, we can reference by using its name, as seen in the previous example.
+				\\\\
+				In Sage, we may assign new values to the same variable.
+				<verbatim>
+	sage: s=12
+	sage: s
+	12
+	sage: s=34
+	sage: s
+	34
+				</verbatim>
+				We may also reference a variable while assigning it a new value.
+				For example,
+				<verbatim>
+	sage: t=7
+	sage: t=t+1
+	sage: t
+	8
+				</verbatim>
+				Sage also offers us a clever way to assign multiple variables at once.
+				<verbatim>
+	sage: a,b=1,2
+	sage: a
+	1
+	sage: b
+	2
+				</verbatim>
+				Additionally, we can display a sequence of variables using commas.
+				<verbatim>
+	sage: c,d,e=2,3,5
+	sage: c,d,e
+	(2, 3, 5)
+				</verbatim>
+				If we are assigning multiple variable at a time, and for some reason we wish to skip a value on the right hand side, 
+				we may use an underscore on the left hand side.
+				For example,
+				<verbatim>
+	sage: a,_,c=1,2,3
+	sage: a
+	1
+	sage: c
+	3
+	sage: _,r = divmod(19,5)
+	sage: r
+	4
+	sage: 
+				</verbatim>
+			</section>
+				<section title="Lists and strings" label="lists">
+					 <dependency>variables</dependency>
+					 In this section we shall cover the basic properties of lists and some fundamental functions associated with lists.  
+					 Also included in this section is a bit of info about strings, as they act like lists in Sage.
+					 \\\\
+					<subsection title="Lists" label='lists-lists'>					                                        A list is essentially an ordered collection of objects.
+					 The elements of a list are indexed by the integers, starting with 0.
+					 We may assign lists to a variable and access their elements through indices (the plural of index)
+					 Here is a trivial example.
+					 <verbatim>
+	 sage: [6,28,496,8128]
+	 [6, 28, 496, 8128]
+	 sage: s=[2,3,5,7,11,13,17,2]
+	 sage: s[0]
+	 2
+	 sage: s[1]
+	 3
+	 sage: s[5]
+	 13
+	 sage: s[6]
+	 17
+					 </verbatim>
+					 Take careful note of how we access the elements:
+					 Though 2 is the first element of the list 's', it is accessed by the index 0.
+					 \\\\
+					 If we wish to know the index of an element, we use the 'index' function.
+					 It produces the  index for the first occurance.
+					 \\\\
+					 We can also count the number of times that an element occurs in a list.
+					 <verbatim>
+         sage: y = [2,3,3,3,2,1,8,6,3]
+	 sage: y.index(2) 
+	 0
+	 sage: y.index(3)
+	 1
+	 sage: y.index(14)
+	 ...
+	 ValueError: list.index(x): x not in list
+	 sage: w.count(3)
+	 4
+					 </verbatim>
+					 We can sort the elements of 'y', which changes 'y'.
+					 <verbatim>
+         sage: y = [2,3,3,3,2,1,8,6,3]
+	 sage: y.sort(); y
+	 [1, 2, 2, 3, 3, 3, 3, 6, 8]
+	 sage: y.index(2)
+	 1
+					 </verbatim>
+					 We may alter the elements of a list as follows:
+					 <verbatim>
+	 sage: u=[1,2,3,4]
+	 sage: u[0]=-1
+	 sage: u
+	 [-1, 2, 3, 4]
+					 </verbatim>
+					 To add an element to the end of a list, we use the 'append' function.
+					 <verbatim>
+	 sage: q=[1,2,3]
+	 sage: q.append(4)
+	 sage: q
+	 [1, 2, 3, 4]
+					 </verbatim>
+					 Similarly, we may use the 'extend' function to concatenate two lists, that is, to append a list to the end of a list. 
+					 <verbatim>
+	 sage: a=[1,2]
+	 sage: a.extend([10,11,12])
+	 sage: a
+	 [1, 2, 10, 11, 12]
+					 </verbatim>
+					 It is, perhaps, simpler to use the '+' operator to concatenate lists.  Notice that for two lists 'a' and 'b' the two sums 'a+b' and 'b+a' are usually not equal.
+					 <verbatim>
+	 sage: [1,3,5]+[2,4,6]+[100]
+	 [1, 3, 5, 2, 4, 6, 100]
+	 sage: [2,4,6]+[1,3,5]+[100]
+	 [2, 4, 6, 1, 3, 5, 100]
+					 </verbatim>
+					 Lists need not contain only integers, or even numbers.
+					 For whatever reason, we can have lists of lists!
+					 <verbatim>
+	 sage: T=[[1,2],[1,3],[1,4]]
+	 sage: T[2]
+	 [1, 4]
+					 </verbatim>
+					 If we wish to remove an element from a list, we use the 'remove' method.
+					 <verbatim>
+	 sage: v=[3,5,11,13,17,19,29,31]
+	 sage: v.remove(11)
+	 sage: v
+	 [3, 5, 13, 17, 19, 29, 31]
+					 </verbatim>
+					 Note that a list may contain the same element more than once;
+					 'remove' removes only the first instance of the given element.
+					 <verbatim>
+	 sage: w=[1,2,3,0,3,4,4,0,4,5]
+	 sage: w.remove(3)
+	 sage: w
+	 [1, 2, 0, 3, 4, 4, 0, 4, 5]
+	 sage: w.remove(4)
+	 sage: w
+	 [1, 2, 0, 3, 4, 0, 4, 5]
+					 </verbatim>
+					</subsection>
+					<subsection title="Sets" label='lists-sets'>
+					 We may convert a list to a set.  This will remove repeated elements.
+					 Then to find the number of elements ask for the cardinality.
+					 <verbatim>
+	 sage: y = [2,3,3,3,2,1,8,6,3]
+	 sage: sety = Set(y)
+	 sage: sety
+	 {8, 1, 2, 3, 6}
+	 sage: sety.cardinality()
+	 5
+					 </verbatim>
+					 We can also apply the usual set operations: <code> union, intersection, difference and symmetric_difference</code>.  For example,
+					 <verbatim>
+         sage: sety.union(Set([3,2,2,5]))
+	 {1, 2, 3, 5, 6, 8}
+	 sage: sety.intersection(Set([3,2,2,5]))
+	 {2, 3}
+					 </verbatim>
+					 Use the 'subsets' method to construct the set of all subsets of a set, or to construct the set of subsets with a specified number of elements. 
+					 <verbatim>
+         sage: A = Set([1,2,3]); A
+	 {1, 2, 3}
+	 sage: powA = A.subsets(); powA
+	 Subsets of {1, 2, 3}
+	 sage: pairsA = A.subsets(2); pairsA
+	 Subsets of {1, 2, 3} of size 2
+	 sage: powA.list()
+	 [{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}]
+	 sage: pairsA.list()
+	 [{1, 2}, {1, 3}, {2, 3}]
+					 </verbatim>
+					</subsection>
+					<subsection title="Strings" label='lists-strings'>
+					To construct a string in Sage we may use single or double quotes.
+					 For consistency, we will always use single quotes
+					 <verbatim>
+	 sage: a='I am a string'
+	 sage: a
+	 'I am a string'
+	 sage: print a
+	 I am a string
+					 </verbatim>
+					 Note the difference between asking for the value of $ a $ and asking Sage to print $ a $.
+					 Like lists, we can access the elements of a string through their indices
+					 <verbatim>
+	 sage: s='mathematics'
+	 sage: s[0]
+	 'm'
+	 sage: s[4]
+	 'e'
+					 </verbatim>
+					 Sage offers a convenient way to create lists containing consecutive integers
+					 <verbatim>
+	 sage: [1..7]
+	 [1, 2, 3, 4, 5, 6, 7]
+	 sage: [4..9]
+	 [4, 5, 6, 7, 8, 9]
+	 sage: [2,4..10]
+	 [2, 4, 6, 8, 10]
+					 </verbatim>
+					 In the first two examples it is quite clear what is happening;
+					 In the last example above, however, it is a trickier.
+					 If we input '[a,b..c]' for integers $a$,$b$ and $c$ with $ a &lt; b \le c $,
+					 we get back the list '[a,a+d,$\ldots$,a+k*d]' where $ d = b-a $ and $ k $ is the largest integer such that $ a+kd \le c $.
+					 If this is a bit overwhelming, perhap some examples will clear things up
+					 <verbatim>
+	 sage: [1,4..13]
+	 [1, 4, 7, 10, 13]
+	 sage: [1,11..31]
+	 [1, 11, 21, 31]
+	 sage: [1,11..35]
+	 [1, 11, 21, 31]
+					 </verbatim>
+					 <dependency>basic-functions</dependency>
+					 Additionally, we can use this contstruction method with some of Sage's symbolic constants such as 'pi'
+					 <verbatim>
+	 sage: [pi,4*pi..32]
+	 [pi, 4*pi, 7*pi, 10*pi]
+					 </verbatim>
+					 Having constructed lists, we may now introduce some important functions which take lists as an argument.
+					 The most fundamental perhaps is the 'len' function, which returns the number of elements of the list
+					 <verbatim>
+	 sage: len([1..1001])
+	 1001
+	 sage: len([2,3,5,7,11])
+	 5
+					 </verbatim>
+					 'len' will also give us the number of characters in a string
+					 <verbatim>
+	 sage: c='Gauss'
+	 sage: len(c)
+	 5
+					 </verbatim>
+					 <dependency>universes</dependency>
+					 Two convenient functions associated with lists are 'sum' and 'prod.'
+					 'sum' returns the sum of the elements of a list
+					 <verbatim>
+	 sage: sum([1,2,3])
+	 6
+	 sage: sum([1..100])
+	 5050
+					 </verbatim>
+					 'prod' returns the product of the elements of the list
+					 <verbatim>
+	 sage: prod([1..4])
+	 24
+					 </verbatim>
+					 One must be careful using 'sum' and 'prod.'
+					 In particular, the elements of the list must all belong to a universe with a definition of addition and/or multiplication.
+					 \\\\
+					 Another useful function is 'map.'
+					 This function takes a function $ f $ and a list $ [a_0,\ldots,a_{n-1}] $ and returns $ [f(a_0),\ldots,f(a_{n-1})] $
+					 <verbatim>
+	 sage: map(cos,a)
+	 [cos(1), cos(2), cos(3), cos(4), cos(5)]
+	 sage: map(factorial,a)
+	 [1, 2, 6, 24, 120]
+	 sage: sum(map(exp,a))
+	 e + e^2 + e^3 + e^4 + e^5
+					 </verbatim>
+				       </subsection>
+				     </section>
+			<section title="External files and sessions" label="sessions">
+				<dependency>variables</dependency>
+				In practice, especially when using sage for research and projects, it is much more convenient to load external files into Sage.
+				There are many situations in which it is convenient to use an external file.
+				One such instance is when we have a block of code which we wish to run for several different cases.
+				It would be quite tedious to retype all of our code, and thus we can write it to an external file.
+				\\\\
+				Let us move on to an example.
+				Suppose we have a file in the same directory from which we started Sage called <code>pythag.sage</code> with the following content.
+				<verbatim>
+	# Begin pythag.sage
+	a=3
+	b=4
+	c=sqrt(a^2+b^2)
+	print c
+	# End
+				</verbatim>
+				Note that all characters after a <code>#</code> of a Sage file are ignored when loaded.
+				We may now load the file in Sage using the <code>load</code> command.
+				<verbatim>
+	sage: load pythag.sage
+	5
+				</verbatim>
+				After having loaded the file, all of the variables initialized now exist in our Sage session.
+				<verbatim>
+	sage: a,b,c
+	(3, 4, 5)
+				</verbatim>
+				Along these lines of convenience, Sage allows us to save a session to pick up where we left off.
+				That is, suppose we have done various calculations and have several variables stored.
+				We may call the <code>save_session</code> function to store our session into a file in our working 
+				directly (typically sage_session.sobj).
+				Following, we may exit Sage, power off our computer, or what have you.
+				At any later time, we may load the file by opening Sage from the directory containing the save file and using the 
+				<code>load_session</code> function.
+				\\\\
+				Here is an example.
+				<verbatim>
+	sage: a=101
+	sage: b=103
+	sage: save_session()
+	sage: exit
+	Exiting SAGE (CPU time 0m0.06s, Wall time 0m31.27s).
+				</verbatim>
+				Now start Sage from the same folder as the save file:
+				<verbatim>
+	sage: load_session()
+	sage: a
+	101
+	sage: b
+	103
+				</verbatim>
+				We may specify the name of a save session, if we so desire.
+				<verbatim>
+	sage: T=1729
+	sage: save_session('ramanujan')
+	sage: exit
+	Exiting SAGE (CPU time 0m0.06s, Wall time 0m16.57s).
+				</verbatim>
+				And again we load our session <code>ramanujan</code> with <code>load_session</code>.
+				<verbatim>
+	sage: load_session('ramanujan')
+	sage: T
+	1729
+				</verbatim>
+			</section>
+		</chapter>
+		<chapter title="Intermediate programming" label="prog-intermediate">
+			<section title="Conditionals" label="conditionals">
+				<dependency>basic-division</dependency>
+				<dependency>booleans</dependency>
+				<dependency>equalities</dependency>
+				A Conditional statement runs a block of code when certain conditions are met.
+				For example, suppose we wish to halve an integer $ n $ if it is even.
+				Here is how we implement this example in Sage.
+				<verbatim>
+	sage: n=44
+	sage: if n%2 == 0:                             
+	....:     print n/2
+	....:
+	22
+	sage: n=37
+	sage: if n%2 == 0:                             
+	....:     print n/2
+	....:
+	sage:
+				</verbatim>
+				Notice that since $ n = 44 $ is even, the condition is met and Sage prints half of $ n $.
+				In the case of $ n = 37 $, though, the condition is not met and nothing happens.
+				\\\\
+				Unlike some other languages, the syntax used in Sage is picky about indentation.
+				All of the code to be run if a condition is met must have the same level of indentation.
+				This takes some getting used to, but it produces neat, organized code.
+				\\\\
+				At times we may wish to check for different cases.
+				To do so we use the <code>elif</code> operator, which is short for else if.
+				<verbatim>
+	sage: m=31
+	sage: if m%3==0:
+	....:     print m/3
+	....: elif m%3==1:
+	....:     print (m-1)/3
+	....:     
+	10
+				</verbatim>
+				Notice that we had to return to the original level of indentation of the <code>if</code> for the <code>elif</code>.
+				<code>elif</code> must occur after an <code>if</code>, and we may use as many <code>elif</code>s as we desire.
+				Once one of the conditions is met, the associated code is executed and Sage leaves the conditoinal structure.
+				For example, consider the following conditional structure.
+				<verbatim>
+	sage: r=55
+	sage: if 11.divides(r):
+	....:     print 11            
+	....: elif r==55:
+	....:     print 55
+	....:     
+	11
+				</verbatim>
+				Here both conditions are clearly met, but we only run the code of the first condition met.
+				This is very fundamental to controlling the flow of code.
+				There is also a subtle thing to note in the previous example.
+				<code>11.divides(r)</code> already returns a boolean, hence we do not need to use an equality here.
+				We could have just as easily used <code>11.divides(r)==True</code> but it is not necessary.
+				\\\\
+				Often we wish to execute some code if none of our conditions above are met.
+				For this we use the <code>else</code> operator.
+				<verbatim>
+	sage: n=2*3*5+1
+	sage: if 2.divides(n):
+	....:     print 2
+	....: elif 3.divides(n):
+	....:     print 3
+	....: else:
+	....:     print n
+	....:     
+	31
+				</verbatim>
+				Since none of the conditions were met, our code defauled on the <code>else</code> and printed $ n $.
+			</section>
+			<section title="While loops" label="while-loops">
+				<dependency>variables</dependency>
+				<dependency>booleans</dependency>
+				<dependency>equalities</dependency>
+				While loops are one of the most useful techniques in programming.
+				Essentially, a while loop runs a block of code while a condition is still satisfied.
+				Let's see a simple example.
+				<verbatim>
+	sage: i=0
+	sage: while i &lt; 5:
+	....:     print i^2
+	....:     i=i+1
+	....:     
+	0
+	1
+	4
+	9
+	16
+				</verbatim>
+				Once the condition $ i &lt; 5 $ is False, Sage exits the loop structure;
+				the variable $ i $ still exists, though.
+			</section>
+			<section title="For loops" label="for-loops">
+				<dependency>variables</dependency>
+				<dependency>booleans</dependency>
+				<dependency>equalities</dependency>
+				<dependency>lists</dependency>
+				A for loop repeatedly runs a block of code a fixed number of times.
+				In Sage, for loops iterate over a fixed list.
+				<verbatim>
+	sage: for i in [0..4]:
+	....:     print i^2
+	....:     
+	0
+	1
+	4
+	9
+	16
+				</verbatim>
+				We may iterate over any list, it need not be consecutive integers.
+				Here are a few more (especially silly) examples
+				<verbatim>
+	sage: for str in ["apple","banana","coconut","dates"]:                            
+	....:     print str.capitalize()
+	....:     
+	Apple
+	Banana
+	Coconut
+	Dates
+	sage: for char in "Leonhard Euler":   
+	....:     print char.swapcase()
+	....:     
+	l
+	E
+	O
+	N
+	H
+	A
+	R
+	D
+	
+	e
+	U
+	L
+	E
+	R
+				</verbatim>
+			</section>
+			<section title="Loops in lists" label="loop-lists">
+				<dependency>lists</dependency>
+				<dependency>for-loops</dependency>
+				A particularly useful and mathematical technique in Sage is the construction of a list using for loops.
+				Consider the mathematically-written set $ \{ 2k : 0 \le k \le 10 \} = \{ 0,2,4,\ldots,18,20 \}$.
+				We can place a for loop inside of a list to construct this object with similar notation
+				<verbatim>
+	sage: [ 2*k for k in [0..10] ]
+	[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+				</verbatim>
+				This concept may seem a bit intimidating at first, but it is extremely useful.
+				\\\\
+				Now consider the more specific set 
+				$ \{ 2k : 0 \le k \le 10 , \gcd(3,k) = 1  \} $ which is the set $\{ 2,4,8,10,14,16,20 \} $.
+				We can add a conditional statement inside the list to again beautifully construct this set
+				<verbatim>
+	sage:  [ 2*k for k in [0..10] if gcd(3,k)==1 ] 
+	[2, 4, 8, 10, 14, 16, 20]
+				</verbatim>
+				Notice that the syntax for the construction is nearly identical to the mathematical notation.
+			</section>
+			
+			<section title="Functions" label="functions">
+				A function in Sage an object containing a block of code which processes a set of arguments and returns some value.
+				Well, that's a bit abstract.
+				Essentially a function in Sage is much like a function in mathematics, but certainly not the exact same.
+				A function might better be called a process or a subroutine.
+				\\\\
+				Anyway, consider the following common mathematical function $ f(x)=x^2 $.
+				This function $ f $ takes a number $ x $ and returns its square.
+				Here's how we might implement this in Sage
+				<verbatim>
+	sage: def f(x):
+	....:     return x^2
+				</verbatim>
+				<code>def</code> tells Sage we are going to define a function.
+				Following <code>def</code> we supply the name of the function and the arguments it takes in parentheses.
+				Here we named our function <code>f</code> and it takes a single argument <code>x</code>.
+				\\\\
+				The evaluations of functions in Sage mimics the regular mathematical notation.
+				Let's evaluate our function <code>f</code> from above
+				<verbatim>
+	sage: f(2)
+	4
+	sage: f(pi)
+	pi^2
+				</verbatim>
+				Certainly these are the results we'd expect.
+				\\\\
+				Functions may have any number of arguments.
+				It is permissible for a function to have no arguments
+				<verbatim>
+	sage: def g(x,y):
+	....:     return x*y
+	....: 
+	sage: g(2,3)
+	6
+	sage: g(sqrt(2),sqrt(2))
+	2
+	sage: def h():                
+	....:     return 1/2
+	....: 
+	sage: h()
+	1/2
+				</verbatim>
+				Here our function <code>g</code> is essentially a multiplication operator.
+				The function <code>h</code> takes no arguments and simply returns the value <code>1/2</code>.
+				\\\\
+				All functions in Sage return an object.
+				If we do not specify something to return in our function, then Sage returns the empty object <code>None</code>.
+				<verbatim>
+	sage: def lazy(x):
+	....:     print x^2
+	....:     
+	sage: lazy(sqrt(3))
+	3
+	sage: print lazy(sqrt(3))
+	3
+	None
+				</verbatim>
+				Notice that the function prints <code>3</code> no matter what, but returns <code>None</code>.
+				\\\\
+				A function may return multiple values separated by commas
+				<verbatim>
+	sage: def s(x):
+	....:     return x^2,x^3
+	....: 
+	sage: s(1)
+	(1, 1)
+	sage: s(2)
+	(4, 8)
+	sage: a,b=s(3)
+	sage: a
+	9
+	sage: b
+	27
+				</verbatim>
+				In Sage functions may reference themselves (very metaphysical).
+				A function which does this is typically called recursive.
+				The most common example of a recursive function is the factorial function
+				<verbatim>
+	sage: def fac(n):
+	....:     if n==1:
+	....:         return 1
+	....:     else:             
+	....:         return n*fac(n-1)
+	....:     
+	sage: fac(3)
+	6
+	sage: fac(4)
+	24
+				</verbatim>
+				For the sake of completeness let's examine exactly what is happening in this last example when we call <code>fac(3)</code>.\\
+				For $ n = 3 $, since $ 3 \ne 1 $, <code>fac</code> decides to return <code>3*fac(2)</code>, hence we must evaluate <code>fac(2)</code>.\\
+				Since $ 2 \ne 1 $, <code>fac</code> decides to return <code>2*fac(1)</code>.\\
+				Since $ 1 = 1 $, <code>fac(1)</code> will automatically return $ 1 $.\\
+				Hence we go back into the <code>fac(2)</code> process and return <code>2*1</code> which is then returned to the <code>fac(3)</code> 
+				process to obtain <code>3*2*1</code> which is of course 6.
+				In general, <code>fac(n)</code> will evaluate to be the product of the first $ n $ positive numbers.
+			</section>
+		</chapter>
+	</category>
+
+	<category title="Mathematical structures" label="adv">
+		<chapter title="Integers, modular arithmetic" label="integers">
+			<section title="Euclidean Algorithm" label="euclidean-algorithm">
+				<dependency>basic-division</dependency>
+				<dependency>variables</dependency>
+				<dependency>sessions</dependency>
+				<dependency>while-loops</dependency>
+				Recall that the division algorithm states that for $ a,b \in \mathbb{Z} $ with $ b \ne 0 $, 
+				there exist a unique $ q,r \in \mathbb{Z} $ such that $ a = bq+r $ and $ 0 \le r &lt; b $.
+				This result is the stepping stone which leads us to the Euclidean Algorithm to calculate the gcd of two integers $ a $ and $ b $ with $ b \ne 0 $.
+				Here is an implementation of the Euclidean algorithm in Sage (<link url="euclid.sage">euclid.sage</link>)
+				<verbatim>
+	# Begin euclid.sage
+	r=a%b
+	print (a,b,r)
+	while r != 0:
+	        a=b; b=r
+	        r=a%b
+	        print (a,b,r)
+	# End euclid.sage
+				</verbatim>
+				If we create a file <code>euclid.sage</code> containing the text above, then the output when we load the file is:
+				<verbatim>
+	sage: a=15; b=4
+	sage: load euclid.sage
+	(15, 4, 3)
+	(4, 3, 1)
+	(3, 1, 0)
+	sage: a=15; b=5
+	sage: load euclid.sage
+	(15, 5, 0)
+				</verbatim>
+				In the first case, we see that the gcd was 1, while in the second the gcd was 5.
+				<exercise>
+					Revise the while loop so that only the $\gcd(a,b)$ and the total number of divisions 
+					(i.e. the number of steps through the algorithm) are printed.    
+					Compare the speed of this version of the algorithm with the built-in sage function 'gcd.'  
+					You will need to test large integers.
+				</exercise>
+				By backwards substitution, the Euclidean algorithm additionally allows us to determine integers 
+				$ u $ and $ v $ such that $ au+bv = \gcd(a,b) $.
+				This is known as the extended Euclidean algorithm.
+				We use the 'xgcd' function to obtain the triple $ ( \gcd(a,b) , u , v ) $
+				<verbatim>
+	sage: d,u,v=xgcd(24,33)
+	sage: 24*u+33*v
+	3
+	sage: d
+	3
+				</verbatim>
+				<exercise>
+					Write your own extended Euclidean algorithm by revising  the while loop above.
+				</exercise>
+			</section>
+			<section title="Integers Modulo $n$" label="integers-modulo-n">
+				<dependency>universes</dependency>
+				<dependency>variables</dependency>
+				In this section we shall cover how to construct and manipulate $ \mathbb{Z}_n = \mathbb Z}/(n\mathbb{Z}) $ and its elements.
+				\\
+				To construct the ring of integers modulo $ n $, we use the 'Integers' function.
+				<verbatim>
+	sage: Integers(7)
+	Ring of integers modulo 7
+	sage: Integers(100)
+	Ring of integers modulo 100
+				</verbatim>
+				Using this construction allows us to efficiently work in $\mathbb{Z}_n $ as opposed to repeatedly using the '%' operator.
+				To do this we will coerce integers into $\mathbb{Z}_n $.
+				<verbatim>
+	sage: R=Integers(13)
+	sage: a=R(5)
+	sage: b=R(8)
+	sage: a+b
+	0
+	sage: a*b
+	1
+	sage: a-110
+	12
+				</verbatim>
+				Notice that in the last example, Sage naturally coerces the integer 110 into $ Z_{13} $.
+				When it makes sense to coerce elements from $ Z_m $ to $ Z_n $, Sage will do so.
+				<verbatim>
+	sage: Z2=Integers(2)
+	sage: Z4=Integers(4)
+	sage: Z5=Integers(5)
+	sage: a=Z2(1)
+	sage: b=Z4(3)
+	sage: c=Z5(2)
+	sage: a*b
+	1
+	sage: a*c
+	..
+	TypeError: unsupported operand parent(s) for '*': 'Ring of integers modulo 2' and 'Ring of integers modulo 5'
+	sage: b+a
+	0
+				</verbatim>
+				Some caution needs to be taken, for Sage allows the following:
+				<verbatim>
+	sage: Z5(Z2(1)) # this does not make sense
+	1
+				</verbatim>
+				It does not take much effort to realize why this does not make sense.
+				In $ Z_2 $, the element $ 1 $ represents the class of odd integers.
+				Thus $ 13 = 1 $ in $ Z_2 $, but $ 13 = 3 $ in $ Z_5 $.
+			</section>
+			<section title="Linear congruences, inverses, division" label="Zn-division">
+				<dependency>Zn-construction</dependency>
+				<dependency>loops-lists</dependency>
+				A linear congruence is an equation of the form $ ax=b $ in $ \mathbb{Z}_n $.
+				One way to solve such a problem is an exhaustive search by constructing the list of containing $ ax $ for each $ x \in \mathbb{Z}_n $.
+				<verbatim>
+	sage: R=Integers(15)
+	sage: a=R(7)
+	sage: 11 in [ a*x for x in R ]
+	True
+	sage: a=R(5)
+	sage: 11 in [ a*x for x in R ]
+	False
+				</verbatim>
+				Notice here $ 7x=11 $ had a solution in $ Z_{15} $ while $ 5x=11 $ did not.
+				\\\\
+				If $ ax = 1 $ has a solution modulo $ n $, then we say that $ a $ is a unit in $ \mathbb{Z}_n $.
+				<exercise>
+					Use an exhuastive search method to write a function which determines if $ a $ is a unit modulo $ n $.
+				</exercise>
+				In Sage we may use the 'is_unit' method to determine if $ a $ is a unit mod $ n $
+				<verbatim>
+	sage: R=Integers(21)
+	sage: R(3).is_unit()
+	False
+	sage: R(4).is_unit()
+	True
+				</verbatim>
+				If an element is invertible, then we may raise it to the $ -1 $st power to obtain its inverse
+				<verbatim>
+	sage: R=Integers(21)
+	sage: R(4)^(-1)
+	16
+	sage: R(4)^-1
+	16
+				</verbatim>
+				Note that it is not necessary here to put the <code>-1</code> in parentheses, but is good practice.
+				<exercise>
+					For $ n = 13,15 $ and $ 21 $ determine which of $ 3,4 $ and $ 5 $ are units in $ \mathbb{Z}_n $.
+					When you find a unit, determine its inverse and compare this so the output of " xgcd($ a $,$ n $) " and explain the relationship.
+				</exercise>
+				It is important to understand that division in $ \mathbb{Z}_n $ is really multiplication by an inverse.
+				<verbatim>
+	sage: R=Integers(24)
+	sage: R(4)/R(5)
+	20
+	sage: R(4)*R(5)^-1
+	20
+	sage: R(4/5)
+	20
+				</verbatim>
+				Not all elements have an inverse, of course.
+				If we try an invalid division, Sage will complain
+				<verbatim>
+	sage: R(5/4)
+	...
+	ZeroDivisionError: Inverse does not exist.
+				</verbatim>
+				Notice that in the cases <code>R(4/5)</code>and <code>R(5/4)</code> we are asking Sage to 
+				coerce a rational number into the $ \mathbb{Z}_{24} $
+				Thus, consider the following example, which at first seems like an error
+				<verbatim>
+	sage: R(20).is_unit()
+	False
+	sage: R(16/20)
+	20
+				</verbatim>
+				20 is not a unit, yet at first glance it would seem we divided by it in $ \mathbb{Z}_{24} $.
+				However, note the order of operations.  First sage says <code>16/20</code> is really <code>4/5</code>, 
+				and then coerces <code>4/5</code> into $ \mathbb{Z}_{24} $.
+				Since 5 is a unit in $ \mathbb{Z}_{24} $, everything works out ok;
+				however, we should be careful to understand that even though Sage does not complain about coercing 
+				$ \frac a b $ into $ \mathbb{Z}_n $, this does not necessarily mean $ b $ is a unit.
+			</section>
+		</chapter>
+		<chapter title="Groups" label="groups">
+			<section title="Cyclic Groups" label="group-cyclic">
+			</section>
+			<section title="Symmetry Groups" label="group-symmetry">
+			</section>
+			<section title="Finitely Generated Groups" label="groups-finitegen">
+			</section>
+		</chapter>
+	      <chapter title="Linear Algebra" label="linalg">
+			<section title="Vectors and Matrices" label="matrices">
+			  <subsection title="Construction" label="vector-matrix-construction">
+                                To create a vector use the <code> vector </code> command with a list of entries. Scalar multiples and the dot product are straightforward to compute.  As with lists, vectors are indexed starting from 0.
+				<verbatim>
+	sage: v= vector([1,2,3,4])
+        sage: 7*v
+	(7, 14, 21, 28)
+	sage: v*v
+	30
+	sage: v[0]
+	1
+	sage: v[4]
+	ERROR: An unexpected error occurred while tokenizing input
+				</verbatim>
+				Use the matrix command with  a list containing $ m $ lists of length $ n $, to obtain an $ m \times n $ matrix with the inputted lists as rows.  Alternatively,  input integers m,n and a list of length $ mn $, to obtain an  $ m \times n $ matrix. Indexing of matrices also starts with 0.
+				<verbatim>
+	sage: matrix([[1,2],[3,4]])
+	[1 2]
+	[3 4]
+	sage: m = matrix(2,2, [1,2,3,4])
+	sage: m[1,1]
+	4
+				</verbatim>
+				If we input an integer $ n $ and a list of length $ n^2 $ we obtain an $ n \times n $ matrix by chopping 
+				up the list into $ n $ rows.
+				<verbatim>
+	sage: matrix(2,[1,2,3,4])  
+	[1 2]
+	[3 4]
+				</verbatim>
+				We may specify the parent of the entries of the matrix.
+				<verbatim>
+	sage: matrix(QQ,2,[1.1,1.2,1.3,1.4])
+	[11/10   6/5]
+	[13/10   7/5]
+				</verbatim>
+				\\\\
+				There are also several special matrices built into Sage.
+				To construct the identity matrix we use the <code>identity_matrix</code> function.
+				<verbatim>
+	sage: identity_matrix(3)
+	[1 0 0]
+	[0 1 0]
+	[0 0 1]
+				</verbatim>
+				To construct the zero matrix we may use <code>zero_matrix</code> or the regular matrix function with no list inputted.
+				<verbatim>
+	sage: zero_matrix(2,2)
+	[0 0]
+	[0 0]
+	sage: matrix(2)
+	[0 0]
+	[0 0]
+	sage: matrix(2,3)
+	[0 0 0]
+	[0 0 0]
+				</verbatim>
+				Note that if we use <code>zero_matrix</code> we must input two integers.
+				\\\\
+				A submatrix is 
+			  </subsection>
+			  <subsection title="Computations" label="vector-matrix-computation">
+				We may use $ + , - , * $ and ^ for matrix addition, subtraction, multiplication and exponents.
+				<verbatim>
+	sage: A=matrix(2,[1,1,0,1])
+	sage: B=matrix(2,[1,0,1,1])
+	sage: A+B
+	[2 1]
+	[1 2]
+	sage: A*B
+	[2 1]
+	[1 1]
+	sage: B*A
+	[1 1]
+	[1 2]
+	sage: A-B
+	[ 0  1]
+	[-1  0]
+	sage: A^3
+	[1 3]
+	[0 1]
+	sage: A^-1
+	[ 1 -1]
+	[ 0  1]
+				</verbatim>
+				As usual, we must be careful about matrix dimensions.
+				Notice how we computed the inverse of a matrix.  If the matrix is not invertible Sage will complain about a ZeroDivisionError.
+				\\\\
+				Vectors are considered both as rows and as columns, so you can multiply a 3-vector by a $3\times n$  
+				matrix on the right, or by a $n\times 3$ matrix on the left.
+				<verbatim>
+        sage: x = vector([12,3,3])
+	sage: x
+	(12, 3, 3)
+	sage: A
+	[1 2 3]
+	[4 5 6]
+	sage: A*x
+	(27, 81)
+	sage: B = transpose(A)
+	sage: B
+	[1 4]
+	[2 5]
+	[3 6]
+	sage: x*B
+	(27, 81)
+				</verbatim>
+				We use the <code>det</code> method to calculate the determinant of a square matrix.
+				<verbatim>
+	sage: MS=MatrixSpace(QQ,3)
+	sage: A=MS.random_element()
+	sage: A
+	[-1/2    0   -1]
+	[   0   -2    2]
+	[   1    0 -1/2]
+	sage: A.det()
+	-5/2
+				</verbatim>
+				To check if a matrix is invertible we may use the <code>is_invertible</code> method
+				<verbatim>
+	sage: A=matrix(2,[1,1,0,1])
+	sage: A.is_invertible()    
+	True
+	sage: A.det()
+	1
+	sage: B=matrix(2,[1,2,3,4])
+	sage: B.is_invertible()
+	False
+	sage: B.det()
+	-2
+	sage: B^-1
+	[  -2    1]
+	[ 3/2 -1/2]
+
+				</verbatim>
+				This example shows us an important, subtle fact.
+				Sage assumes that the matrix $B$ is defined over the integers not over the rationals.
+				A matrix is invertible over $ \mathbb{Z} $ if and only if its determinant is $ \pm 1 $.
+				Thus if we think of $ B $ as a matrix over the rationals, we should obtain different results.  When we ask Sage for the inverse it will automatically treat  $B$ as a matrix over the rationals.
+			  </subsection>
+			</section>
+			<section title="Vector and Matrix Spaces" label="vecspaces">
+				It is sometimes useful to create the space of all matrices of particular dimension, for which we use the  <code>MatrixSpace</code> function.  We must specify the field (or indeed any ring) where the entries live.
+				<verbatim>
+	sage: MatrixSpace(QQ,2,3)
+	Full MatrixSpace of 2 by 3 dense matrices over Rational Field
+				</verbatim>
+				If we input a ring $ R $ and an integer $ n $ we get the matrix ring of $ n \times n $ matrices of $ R $.  Coercion can be used to construct the zero matrix, the indentity matrix, or a matrix with specified entries as shown.
+				<verbatim>
+	sage: Mat = MatrixSpace(ZZ,2); Mat
+	Full MatrixSpace of 2 by 2 dense matrices over Integer Ring
+	sage: Mat(1)
+	[1 0]
+	[0 1]
+	sage: Mat(0)
+	[0 0]
+	[0 0]
+	sage: Mat([1,2,3,4])
+	[1 2]
+	[3 4]
+
+				</verbatim>
+We may compute various spaces associated to a matrix.
+                                <verbatim>
+        sage: Mat = MatrixSpace(QQ, 3,4)
+	sage: A = Mat([[1,2,3,4], [1,3,4,4],[2,5,7,8]])
+	sage: A
+	[1 2 3 4]
+	[1 3 4 4]
+	[2 5 7 8]
+	sage: A.rank()
+	2
+	sage: A.right_kernel()
+	Vector space of degree 4 and dimension 2 over Rational Field
+	Basis matrix:
+	[   1    0    0 -1/4]
+	[   0    1   -1  1/4]
+	sage: A.left_kernel()
+	Vector space of degree 3 and dimension 1 over Rational Field
+	Basis matrix:
+	[ 1  1 -1]
+	sage: A.row_space()
+	Vector space of degree 4 and dimension 2 over Rational Field
+	Basis matrix:
+	[1 0 1 4]
+	[0 1 1 0]
+				</verbatim>
+			</section>
+		</chapter>
+		<chapter title="Rings" label="rings">
+			<section title="Polynomial Rings" label="polynomial-rings">
+				The construction of polynomial rings is straightforward in Sage.
+				We must specify the name of the " indeterminate " variable as well as the coefficient ring.
+				<verbatim>
+	sage: R.&lt;x&gt;=PolynomialRing(ZZ)
+	sage: R
+	Univariate Polynomial Ring in x over Integer Ring
+				</verbatim>
+				Notice how we specify the variable which represents the indeterminate.
+				We first specify the name of our ring, $ R $ in this case.
+				We then type a <code>.</code> followed by the indeterminate's name in brackets.
+				Though $ x $ is the most common choice, we could have used anything, for example
+				<verbatim>
+	sage: R.&lt;Y&gt;=PolynomialRing(QQ) 
+	sage: R
+	Univariate Polynomial Ring in Y over Rational Field
+				</verbatim>
+				We may use any ring $ R $ which we can construct in Sage
+				<verbatim>
+	sage: Z7=Integers(7)
+	sage: R.&lt;x&gt;=PolynomialRing(Z7)
+	sage: R
+	Univariate Polynomial Ring in x over Ring of integers modulo 7
+				</verbatim>
+				Once we have specified a name for the indeterminate in Sage, we may proceed to construct polynomials.
+				<verbatim>
+	sage: R.&lt;x&gt;=PolynomialRing(QQ)
+	sage: x^2+x+1
+	x^2 + x + 1
+	sage: 1/2*x-5
+	1/2*x - 5
+				</verbatim>
+				Sage understands coercion in polynomial rings as well.
+				Witness, if we ask for a rational coefficient in a polynomial ring over $ \mathbb{Z} $, 
+				Sage will naturally coerce this into a ring over $ \mathbb{Q} $
+				<verbatim>
+	sage: S.&lt;y&gt;=PolynomialRing(ZZ)
+	sage: 1/2*y
+	1/2*y
+	sage: (1/2*y).parent()
+	Univariate Polynomial Ring in y over Rational Field
+				</verbatim>
+				Quite nice.
+				\\\\
+				The basic arithmetic is straightforward
+				<verbatim>
+	sage: R.&lt;x&gt;=PolynomialRing(QQ)
+	sage: f=x+1
+	sage: g=x^2+x-1
+	sage: h=1/2*x+3/4
+	sage: f+g
+	x^2 + 2*x
+	sage: g-h
+	x^2 + 1/2*x - 7/4
+	sage: f*g
+	x^3 + 2*x^2 - 1
+	sage: f/g
+	(x + 1)/(x^2 + x - 1)
+	sage: h^3
+	1/8*x^3 + 9/16*x^2 + 27/32*x + 27/64
+				</verbatim>
+				A fundamental attribute of a polynomial is its degree.
+				Not surprisingly, we use the <code>degree</code> method to calculate the degree of a polynomial
+				<verbatim>
+	sage: R.&lt;x&gt;=PolynomialRing(QQ)
+	sage: (x^3+3).degree()
+	3
+	sage: R(0).degree()
+	-1
+				</verbatim>
+				Notice that by convention Sage sets the degree of $ 0 $ to be $ -1 $.
+				\\\\
+				Recall that a polynomial in $ R[x] $ is irreducible if it cannot be written as the product of two polynomials of lesser degree.
+				To check if a polynomial is irreducible, we use the <code>is_irreducible</code> method
+				<verbatim>
+	sage: R.&lt;x&gt;=PolynomialRing(Integers(5))
+	sage: (x^3+x+1).is_irreducible()
+	True
+	sage: (x^3+1).is_irreducible()  
+	False
+				</verbatim>
+				Please note that this method is only suitable for polynomials defined over a field.
+				For example, we cannot determine if polynomials over $ \mathbb{Z}_4 $ are irreducible with the <code>is_irreducible</code> property.
+				One reason for this is polynomial rings defined over fields always possess unique factorization into irreducibles.
+				<verbatim>
+	sage: R.&lt;x&gt;=PolynomialRing(Integers(5))
+	sage: (x^3+x+1).factor()        
+	x^3 + x + 1
+	sage: (x^3+1).factor()        
+	(x + 1) * (x^2 + 4*x + 1)
+				</verbatim>
+				Here we see a confirmation that $ x^3+x+1 $ is irreducible in $ \mathbb{Z}_5[x] $ while 
+				$ x^3+1 $ may be factored, hence is reducible.
+				\\\\
+				The division algorithm for $ F[x] $ states that given $ a(x),b(x) \in F[x] $ with $ b(x) \ne 0 $, 
+				there exist unique $ q(x),r(x) \in F[x] $ such that $ a(x) = b(x)q(x)+r(x) $ and $ \deg(r) &lt; \deg(b) $.
+				Similar to the integers, we may use the <code>//</code> operator to determine the quotient and the 
+				<code>%</code> operator to determine the remainder.
+				<verbatim>
+	sage: R.&lt;x&gt;=PolynomialRing(Integers(7))
+	sage: f=x^6+x^2+1
+	sage: g=x^3+x+1
+	sage: f // g
+	x^3 + 6*x + 6
+	sage: f % g
+	2*x^2 + 2*x + 2
+				</verbatim>
+				Additionally, we may use <code>divmod()</code> if the coefficients of the polynomial are in $ \mathbb{Z} $ or $ \mathbb{Q} $
+				<verbatim>
+	sage: S.&lt;y&gt;=PolynomialRing(QQ)
+	sage: a=(y+1)*(y^2+1)
+	sage: b=(y+1)*(y+5)
+	sage: a // b
+	y - 5
+	sage: a % b
+	26*y + 26
+	sage: divmod(a,b)
+	(y - 5, 26*y + 26)
+				</verbatim>
+				Since $ F[x] $ has unique factorization, we have a unique monic great common divisor of polynomials.
+				\\\\
+				The extended Euclidean algorithm is to determine polynomials $ u(x),v(x) $ such that $ a(x)u(x)+b(x)v(x) = \gcd(a(x),b(x)) $.
+				For polynomials defined over the integers or rationals, we may use the 'xgcd' function to obtain gcd and the pair $ (u,v) $.
+				<verbatim>
+	sage: R.&lt;x&gt;=PolynomialRing(ZZ)
+	sage: a=x^4-1
+	sage: b=(x+1)*x   
+	sage: xgcd(a,b)
+	(x + 1, -1, x^2 - x + 1)
+	sage: d,u,v=xgcd(a,b)
+	sage: a*u+b*v
+	x + 1
+				</verbatim>
+				It is common to think of polynomials in $ R[x] $ as functions from $ R $ to $ R $.
+				The function is obtained by replacing the indeterminate $ x $ with an element of $ r $ of $ R $.
+				We write $ f(r) $ to denote this
+				<verbatim>
+	sage: R.&lt;x&gt;=PolynomialRing(Integers(3))
+	sage: f=2*x+1
+	sage: f(0)
+	1
+	sage: f(1)
+	0
+	sage: f(2)
+	2
+				</verbatim>
+				We say $ r \in R $ is a root of $ f \in R[x] $ if $ f(r) = 0_R $.
+				In Sage we may calculate the roots of a polynomial using the 'roots' method.
+				<verbatim>
+	sage: ((x-1)^2*(x-2)*x^3).roots()
+	[(2, 1), (1, 2), (0, 3)]
+				</verbatim>
+				Sage returns a list of pairs $ (r,m) $ where $ r $ is a root of the polynomial and $ m $ is the exponent of $ (x-r) $ in the polynomial.
+				Of course, a polynomial need not have any roots
+				<verbatim>
+	sage: (x^2+1).roots()
+	[]
+				</verbatim>
+			</section>
+			<section title="Products of Rings" label="ring-products">
+			</section>
+			<section title="Ideals and Quotient Rings" label="ring-ideal-quotient">
+				In this section we will discuss how to construct and do common computations with ideals and quotient rings. 
+				As of the time of this writing, many of the methods have yet to be implemented uniformly across all types of rings. 
+				<subsection title="Ideals" label="ring-ideal">
+					We can construct the ideal generated by a list of generating elements by using the <code>*</code> operator.
+					<verbatim>
+	sage: R.&lt;x&gt; = PolynomialRing(QQ,'x')
+	sage: I = [2*x^2 + 8*x - 10, 10*x - 10]*R                             
+	sage: I
+	Principal ideal (x - 1) of Univariate Polynomial Ring in x over Rational Field
+	sage: J = [ x^2 + 1, x^3 + x ]*R
+	sage: J
+	Principal ideal (x^2 + 1) of Univariate Polynomial Ring in x over Rational Field
+	sage: K = [ x^2 + 1, x - 2]
+	sage: K = [ x^2 + 1, x - 2]*R
+	sage: K
+	Principal ideal (1) of Univariate Polynomial Ring in x over Rational Field
+					</verbatim>
+					It should be noted that Sage automatically reduces the set of generators.
+					\\\\
+					Ideal membership can be determined by the <code>in</code> conditional.
+					<verbatim>
+	sage: R(x-1) in I
+	True
+	sage: R(x) in I  
+	False
+	sage: R(2) in J
+	False
+	sage: R(2) in K
+	True
+					</verbatim>
+					Sage can determine some of the properties of the ideals we just constructed
+					<verbatim>
+	sage: J.is_prime()
+	True
+	sage: K.is_prime()
+	False      
+	sage: I.is_idempotent()
+	False
+	sage: K.is_principal()
+	True
+					</verbatim>
+					However, as of the time of this writing, these methods are not  implemented for all rings. So use with caution. 
+					<verbatim>
+	sage: J.is_maximal()
+	---------------------------------------------------------------------------
+	NotImplementedError                       Traceback (most recent call last)
+	...
+					</verbatim>
+				</subsection>
+				<subsection title="Quotient Rings" label="ring-quotient">
+					To construct the quotient ring of a ring $R$ and an ideal $I$ we use the <code>quotient</code> method
+					<verbatim>
+	sage: R = ZZ
+	sage: I = R*[5]
+	sage: I
+	Principal ideal (5) of Integer Ring 
+	sage: Q = R.quotient(I)
+	sage: Q
+	Ring of integers modulo 5
+					</verbatim>
+					Much like we have done before when working with rings, we can do arithmetic by coercing elements into the ring. 
+					<verbatim>
+	sage: Q(10)
+	0
+	sage: Q(12)
+	2
+	sage: Q(10) + Q(12)
+	2
+	sage: Q(10 + 12)
+	2
+					</verbatim>
+					When working with quotients of polynomial rings it is helpful to give the indeterminate a new name.
+					<verbatim>
+	sage: R.&lt;x&gt; = PolynomialRing(ZZ)
+	sage: parent(x)
+	Univariate Polynomial Ring in x over Integer Ring
+	sage: I = R.ideal(x^2 + 1)
+	sage: Q.&lt;a&gt; = R.quotient(I)
+	sage: parent(a)
+	Univariate Quotient Polynomial Ring in a over Integer Ring with modulus x^2 + 1
+	sage: a^2
+	-1
+	sage: x^2
+	x^2
+					</verbatim>
+					Then we can do arithmetic in this quotient ring without having to explicitly coerce all of our elements.
+					<verbatim>
+	sage: 15*a^2 + 20*a + 1
+	20*a - 14
+	sage: (15 + a)*(14 - a)
+	-a + 211
+					</verbatim>
+					We can generate quotient rings of multi-variate polynomial rings. 
+					<verbatim>
+	sage: R.&lt;x,y&gt; = PolynomialRing(QQ, 2, order='lex') 
+	sage: I = R*[x^2 + y^2 -1 , x*y - 1]  
+	sage: Q.&lt;a, b&gt; = R.quotient(I)
+	sage: Q
+	Quotient of Multivariate Polynomial Ring in x, y over Rational Field by the ideal (x^2 + y^2 - 1, x*y - 1)
+	sage: a^2 + b^2 -1
+	0
+	sage: a^4 - a^2 + 1
+	0
+					</verbatim>
+				</subsection>
+			</section>
+			<section title="Properties and Tests" label='ring-properties'>
+				In Sage, we may check the structure of rings.
+				<verbatim>
+	sage: QQ.is_field()
+	True
+	sage: ZZ.is_integral_domain()
+	True
+	sage: ZZ.is_field()
+	False
+	sage: R=Integers(15)
+	sage: R.is_integral_domain()
+	False
+	sage: S=Integers(17)
+	sage: S.is_field()
+	True
+				</verbatim>
+				For these structures, the structure is not calculated by Sage, but instead is built into the definitions of the rings.
+				////
+				Recall if there is a smallest positive integer $ n $ such that $ n 1_R = 0_R $, then we say that $ R $ has characteristic $ n $.
+				If no such $ n $ exists, we say that $ R $ has characteristic $ 0 $.
+				Rings in Sage have built-in a <code>characteristic</code> function
+				<verbatim>
+	 sage: QQ.characteristic()
+	 0
+	 sage: R=Integers(43)
+	 sage: R.characteristic()
+	 43
+	 sage: ZZ.characteristic()
+	 0
+				</verbatim>
+			</section>
+			<section title="Homomorphisms" label="ring-homomorphism">
+			</section>
+		</chapter>
+		
+		<chapter title="Fields" label="fields">
+			<section title="Finite Fields" label='fields-finite'>
+				 
+			</section>
+		</chapter>
+
+	</category>
+	<bibliography>
+		<bibitem label="sageweb">Sage: Open Source Mathematics Software http://sagemath.org</bibitem>
+	</bibliography>
+</document>

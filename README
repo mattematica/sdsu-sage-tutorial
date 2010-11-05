@@ -1,0 +1,136 @@
+===============
+SDSU Sage tutorial
+===============
+
+
+--------------------------------------------------------------
+
+"Sage Tutorial":  A web tutorial that seeks to introduce
+undergraduates to the Sage computer algebra system (http://www.sagemath.org)
+
+Authors: Michael O'Sullivan, Ryan Rosenblum, and David M. Monarres 
+
+The content of the tutorial is distributed under the Creative Commons Share-Alike with Attribution
+License version 3.0. For details see (http://www.creativecommons.org)
+and COPYING.content.
+
+This tutorial uses the jQuery (http://www.jquery.com) javascript
+library which is distributed under a MIT license. See COPYING.jquery
+for details.
+
+To process the mathematics in the tutorial we have used LaTeXMathML.js
+(c) 2006 by  Douglas Woodall. Which was based on ASCIIMathML.js
+version 1.47  (c) Peter Jipsen 2005. See COPYING.LaTeXMathML.
+
+	  
+--------------------------------------------------------------
+Installation:
+
+All of the source code required to run the website are included in the
+source directory. To install, just copy the entire directory somewhere
+where your webserver can access it. Or the user can open index.html
+directly in their browser. 
+
+Development:
+
+Adding Content
+--------------------------
+
+All content is contained in the content.xml file. The basic hierarchy is as follows
+
+    <document> 
+    	       <category   title=" " label="" >
+	       		   <chapter title=" " label=" " >
+		    	      	    <section title=" " label=" " >
+			      	    </section> 
+		    	</chapter > 					    
+		    </category>
+	</document>
+
+Adding a new chapter or section to content.xml will automatically be
+reflected in the menu system when the page is reloaded. 
+
+A section can be further divided into subsections and sub-subsections
+using the following markup
+
+<section title=" " label=" " >
+      <subsection title=" " label=" " >
+      		  <subsubsection title=" " label="">
+		  </subsubsection >
+      </subsection>
+</section>
+
+Though these subdivisions are not reflected in the menu.
+
+Mathematical Content
+----------------------------
+
+Mathematical content can be added to text by surrounding standard
+LaTeX 
+
+      Some-text some-text $\frac{a}{b} = \frac{c}{d}$ 
+
+At this time only inline mathematics is supported.
+
+Adding Code Snippets/Samples
+---------------------------------------
+
+To add inline code snippets, you should use the <code> tag specified
+
+   text shsiej sjsi  <code>factor()</code> rh hrhr 
+
+For longer pieces of code, the <verbatim> tag is provided.
+
+    <verbatim>
+    sage: test(x^2 + 1) 
+    x^2+1
+    </verbatim>
+
+The verbatim environment is displayed in the web page exactly as it is formatted in the source.
+
+
+Adding Images
+-------------------
+
+Images can be added by using the <image/> tag as follows
+
+       <image height=" " width=" " alt="  "  src="path/to/file.png"  /> 
+
+All of the attributes listed above  must be used.
+
+
+Adding Links
+-------------------
+
+Links are specified using the <link> tag
+
+
+Lists
+-----------------
+
+Numbered lists are created by using the <enumeration> tag
+
+	 <enumeration>
+		<item>  </item>
+	 </enumeration>
+
+Bullet-ed lists are specified using the <list> tag
+
+	  <list>
+		<item> </item> 
+	  </list>
+
+
+References/Bibliography
+-------------------------------
+
+The sites bibliography is specified by the <bibliography> tag. Each item is specified by the <bibitem> tag. 
+
+    <bibliography>
+	<bibitem label="sageweb">Sage: Open Source Mathematics Software http://sagemath.org</bibitem>
+    </bibliography>
+
+To reference the bibliography item in the text we use the <ref> tag with the label attribute given in the bibliography
+   test sjdj sjsjk <ref>sageweb</ref> heheh hehe eh
+
+

@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE tutorial [
+
+<!ELEMENT tutorial (section*)>
+<!ELEMENT section (subsection*)>
+<!ELEMENT subsection (p|pre|div|dep)*>
+<!ELEMENT p (#PCDATA|a)*>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT pre (#PCDATA)>
+<!ELEMENT dep (#PCDATA)>
+<!ELEMENT div (#PCDATA|pre)*>
+
+<!ATTLIST section
+	title CDATA #REQUIRED
+	label ID #REQUIRED
+>
+<!ATTLIST subsection
+	title CDATA #REQUIRED
+	label ID #REQUIRED
+>
+<!ATTLIST div
+	class CDATA #FIXED "exercise"
+>
+
+]>
+
+<tutorial>
+	 <!--
+	 <section title="" label="">
+		  <subsection title="" label="">
+		  </subsection>
+	 </section>
+	 -->
+	 <section title="Introduction" label="intro">
+		  <subsection title="About sage" label="about">
+				<p>
+					 Sage is a free mathematical software system (cite Sage website here).
+					 Throughout this tutorial we will explore how to use Sage to advance our understanding of materials and perform complex, abstract calculations.
+					 The main goal is to make ourselves comfortable using Sage as a mathematical tool. 
+					 We will focus especially on abstract algebra using "Abstract Algebra: An Introduction" by Thomas W. Hungerford.
+					 Included in this tutorial will be many examples and exercises. 
+					 Some of the exercises will help us make sure we have learned how to use Sage and reinforce certain skills.
+					 Other exercises will motivate us to use Sage to explore various problems ranging in difficulty. 
+				</p>
+		  </subsection>
+		  <subsection title="Installing Sage" label="install">
+				<p>
+					 More to come...
+				</p>
+		  </subsection>
+	 </section>
+	 <section title="Arithmetic in $ \mathbb{Z} $" label="ZZ">
+		  <subsection title="Basic arithmetic" label="ZZbasic">
+				<p>
+					 The basic operations are $ + , - , * , $ and $ / $ for addition, subtraction, multiplication and division, respectively.
+					 Additionally we use $ ^ $ for exponents.
+				</p>
+				<pre>
+sage: 1+1
+2
+sage: 103-101
+2
+sage: 7*9
+63
+sage: 7337/11
+667
+sage: 11/4
+11/4
+sage: 2^5
+32
+				</pre>
+				<p>
+					 The tutorial material should be independent of exercises...
+					 That is, the tutorial should not comment on exercises.
+					 The exercises are self-contained.
+				</p>
+				<div>
+					 Evaluate "1+1"
+				</div>
+				<p>
+					 Scroll
+				</p>
+		  </subsection>
+		  <subsection title="Division algorithm" label="ZZdivalg">
+		  </subsection>
+		  <subsection title="Division algorithm 1" label="ZZdivalg1">
+				<dep>ZZbasic</dep>
+		  </subsection>
+		  <subsection title="Division algorithm 2" label="ZZdivalg2">
+				<p>
+					 I am the third division algorithm subsection.
+					 I am redundtant as well as a bad example.
+					 A bad redundant example.
+					 Also for some reason I depend on lists?
+					 Well, whatever.
+				</p>
+				<dep>lists</dep>
+		  </subsection>
+		  <subsection title="Divisors and factorization" label="ZZdivisors">
+		  </subsection>
+	 </section>
+	 <section title="Programming in $ \mathbb{Z} $" label="ZZprog">
+		  <subsection title="Lists" label="lists">
+				<p>
+					 Lists are cool, I guessssss
+				</p>
+		  </subsection>
+		  <subsection title="Booleans" label="boolean">
+				<p>
+					 I am a boolean.
+					 I am true or false
+				</p>
+		  </subsection>
+		  <subsection title="If-Then" label="if-then-else">
+				<dep>boolean</dep>
+				<p>
+					 If a boolean, then do block of code.
+					 What is a boolean, you ask?
+				</p>
+		  </subsection>
+	 </section>
+</tutorial>
